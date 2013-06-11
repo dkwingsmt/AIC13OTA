@@ -1,0 +1,250 @@
+%# -*- coding: utf-8 -*-
+\documentclass[a4paper]{article}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{pstool}
+\usepackage{titlesec, titletoc}     %设置标题格式
+%\usepackage{CJKnumb}               %中文数字
+\usepackage[unicode=true,
+            CJKbookmarks=true,
+            colorlinks=true,
+            linkcolor=black]{hyperref}
+\usepackage[noindent,nocap,nopunct,space]{ctex}
+\usepackage{wrapfig}
+\usepackage{fancyhdr}   %页眉页脚
+\usepackage{ifthen}
+\usepackage{longtable}
+\usepackage{listings}               %代码排版
+\usepackage{color}                  %代码排版背景颜色
+\usepackage[labelfont=bf,up,
+            textfont=it,up]{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{makecell}
+\usepackage[americanvoltages,americancurrents,americanresistors,%
+    americaninductors,americanports,siunitx,emptydiodes,%
+  arrowmos]{circuitikz}
+\usepackage{tikz}
+\usepackage{siunitx}
+\usepackage{multirow}
+
+\definecolor{gray}{rgb}{0.9,0.9,0.9}
+\definecolor{shadecolor}{gray}{0.85}
+
+%\usepackage[autolinebreaks]{mcode}
+\lstset{aboveskip=.8em,
+xleftmargin=1em,
+xrightmargin=1em,
+language={},
+basicstyle=\footnotesize\ttfamily,
+backgroundcolor=\color{gray},
+}
+
+%设置各字体
+\setCJKmainfont[BoldFont={FZDaHei-B02S},
+    ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
+\setCJKmonofont{Adobe Fangsong Std}
+\setmainfont[Mapping=tex-text]{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+
+\newcommand{\HUGE}{\fontsize{29pt}{29pt}\selectfont}
+
+%\titleformat{\contents}{\Huge\bfseries}{\vspace{0.3cm}}{1em} {}
+%\titleformat{\section}{\centering\fontsize{16pt}{20pt}\selectfont\bfseries}{\vspace{0.3cm}}{1em} {\vspace{.8cm}}
+%\titleformat{\subsection}{\fontsize{12pt}{15pt}\selectfont\bfseries}{\arabic{subsection}.}{1em} {}
+%\titleformat{\subsubsection}{\large\bfseries}{\arabic{subsection}.\arabic{subsubsection}}{1em} {\vspace{.1em}}
+
+\headheight=13pt
+
+% 本文档自定义变量
+
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+
+\newcommand{\lsq}{\ensuremath{\protect{[}}}
+\newcommand{\rsq}{\ensuremath{\protect{]}}}
+
+%\renewcommand{\d}{\ensuremath{{d}}}
+\newcommand{\uV}{\si{\volt}}
+\newcommand{\umV}{\si{\milli\volt}}
+\newcommand{\uuV}{\si{\micro\volt}}
+
+\newcommand{\umA}{\si{\milli\ampere}}
+\newcommand{\uuA}{\si{\micro\ampere}}
+
+\newcommand{\upF}{\si{\pico\farad}}
+\newcommand{\ufF}{\si{\femto\farad}}
+\newcommand{\unF}{\si{\nano\farad}}
+
+\newcommand{\upJ}{\si{\pico\joule}}
+
+\newcommand{\unm}{\si{\nano\metre}}
+\newcommand{\uum}{\si{\micro\metre}}
+\newcommand{\uumsq}{\si{\micro\metre^2}}
+
+\newcommand{\uns}{\si{\nano\second}}
+\newcommand{\ups}{\si{\pico\second}}
+
+\newcommand{\uuW}{\si{\micro\watt}}
+\newcommand{\umW}{\si{\milli\watt}}
+
+\newcommand{\uO}{\si{\ohm}}
+\newcommand{\ukO}{\si{\kilo\ohm}}
+
+\newcommand{\uS}{\si{\siemens}}
+\newcommand{\umS}{\si{\milli\siemens}}
+
+\newcommand{\uPV}{\si{\volt^{-1}}}
+\newcommand{\uAPV}{\si{\ampere\per\volt}}
+\newcommand{\umAPV}{\si{\milli\ampere\per\volt}}
+
+\newcommand{\uHz}{\si{\hertz}}
+\newcommand{\uMHz}{\si{\mega\hertz}}
+\newcommand{\ukHz}{\si{\kilo\hertz}}
+
+\newcommand{\udB}{\si{\deci\bel}}
+\newcommand{\uVVPHz}{\si{\volt^2\per\hertz}}
+
+\newcommand{\udeg}{\si{\degree}}
+
+\newcommand{\dM}[1]{\mathrm{M}_\mathrm{#1}}
+\newcommand{\dR}[1]{\mathrm{R}_\mathrm{#1}}
+\newcommand{\dC}[1]{\mathrm{C}_\mathrm{#1}}
+
+\title{Analog Integrated Circuits Homework 7}
+\author{牟瞳 2010011204 微02}
+
+\begin{document}
+
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+\begin{center}
+  \scalebox{0.7}{
+  \begin{circuitikz}
+    \pgfmathsetmacro{\xa}{0}        % B
+    \pgfmathsetmacro{\xb}{2}        % left bias 1
+    \pgfmathsetmacro{\xc}{3.5}      % left bias 2
+    \pgfmathsetmacro{\xd}{5.7}      % M1
+    \pgfmathsetmacro{\xe}{7.2}      % M0
+    \pgfmathsetmacro{\xm}{7.7}      % M8CD
+    \pgfmathsetmacro{\xf}{8.7}      % M2
+
+    \pgfmathsetmacro{\xfb}{11.8}      % VOC feedback
+
+    \pgfmathsetmacro{\ya}{0  }
+    \pgfmathsetmacro{\yb}{2  }      % M1,2
+    \pgfmathsetmacro{\yc}{2.5}
+    \pgfmathsetmacro{\yd}{4  }
+    \pgfmathsetmacro{\ye}{5.0}      % M1,2a
+    \pgfmathsetmacro{\yf}{6.6}      % load lower
+    \pgfmathsetmacro{\yg}{8.1}      % load upper
+    \draw
+    (\xa, \ya)      node[nmos,xscale=-1](mb){}       ++(-0.5,0.3)node[](){$\dM{B}$}
+
+    (\xb, \ya)      node[nmos,xscale= 1](m5c){}     ++(-0.7,0.6)node[](){$\dM{5C}$}
+    (\xb, \yf)      node[pmos,xscale=-1](m5b){}     ++(-0.5,0.3)node[](){$\dM{5B}$}
+    (\xb, \yg)      node[pmos,xscale=-1](m5a){}     ++(-0.5,0.3)node[](){$\dM{5A}$}
+
+    (\xc, \ya)      node[nmos,xscale= 1](m7c){}     ++(-0.7,0.6)node[](){$\dM{7C}$}
+    (\xc, \yf)      node[pmos,xscale=-1](m7b){}     ++(-0.4,0.3)node[](){$\dM{7B}$}
+    (\xc, \yg)      node[pmos,xscale=-1](m7a){}     ++(-0.4,0.3)node[](){$\dM{7A}$}
+
+    (\xd, \yb)      node[nmos,xscale= 1](m1){}      ++(-0.7,0.3)node[](){$\dM{1 }$}
+    (\xd, \ye)      node[nmos,xscale=-1](m1a){}     ++(-0.5,0.3)node[](){$\dM{1A}$}
+    (\xd, \yf)      node[pmos,xscale= 1](m3a){}     ++(-0.7,0.6)node[](){$\dM{3A}$}
+    (\xd, \yg)      node[pmos,xscale= 1](m3){}      ++(-0.7,0.6)node[](){$\dM{3 }$}
+
+    (\xe, \ya)      node[nmos,xscale= 1](m0){}      ++(-0.7,0.6)node[](){$\dM{0 }$}
+    (\xm, \yc)      node[nmos,xscale= 1](m6d){}     ++(-0.7,0.6)node[](){$\dM{6D}$}
+    (\xm, \yd)      node[nmos,xscale= 1](m6c){}     ++(-0.7,0.6)node[](){$\dM{6C}$}
+    (\xe, \yf)      node[pmos,xscale= 1](m6b){}     ++(-0.7,0.6)node[](){$\dM{6B}$}
+    (\xe, \yg)      node[pmos,xscale= 1](m6a){}     ++(-0.7,0.6)node[](){$\dM{6A}$}
+
+    (\xf, \yb)      node[nmos,xscale=-1](m2){}      ++(-0.4,0.2)node[](){$\dM{2 }$}
+    (\xf, \ye)      node[nmos,xscale= 1](m2a){}     ++(-0.7,0.6)node[](){$\dM{2A}$}
+    (\xf, \yf)      node[pmos,xscale= 1](m4a){}     ++(-0.7,0.6)node[](){$\dM{4A}$}
+    (\xf, \yg)      node[pmos,xscale= 1](m4){}      ++(-0.7,0.6)node[](){$\dM{4 }$}
+
+    (\xfb, \yd)     node[american and port](voc){}  ++(-0.7,0.3)node[](){}
+    (\xfb, \yb-1)     node[op amp,yscale=-1,xscale=-1](opamp){} ++(-0.7,0.3)node[](){}
+    ;
+    \draw 
+    (m5a.source)++(\xa-\xb, 0)   to[I=$I_B$]   ++(0, -2)
+                            to[-]       (mb.drain) ;
+
+    \draw 
+    (mb.drain)      node[circ](){}
+                    -|                  (mb.gate)
+                    node[circ](){}
+                    -|                  (m5c.gate)      
+                    -|                  (m0.gate)
+
+    (m5c.drain)     -|                  (m5b.drain)
+                    node[circ](){}
+                    -|                  (m5b.gate)
+                    node[circ](){}
+                    -|                  (m5a.gate)
+    (m5b.source)    -|                  (m5a.drain)
+    (m5b.gate)      -|                  (m4a.gate)
+
+    (m7c.drain)     -|                  (m7b.drain)
+                    node[circ](){}
+                    -|                  (m7a.gate)
+                    node[circ](){}
+    (m7b.source)    -|                  (m7a.drain)
+    (m7a.gate)      -|                  (m4.gate)
+
+    (m3a.source)    -|                  (m3.drain)
+    (m1a.drain)     -|                  (m3a.drain)
+    (m1.drain)      -|                  (m1a.source)
+    (m1.source)     -|                  (m6d.source)
+    (m1.source)++(\xm-\xd,0)node[circ](){}
+    (m2.source)     -|                  (m0.drain)
+    (m2.source)++(\xe-\xf,0)node[circ](){}
+    (m2.drain)      -|                  (m2a.source)
+    (m2a.drain)     -|                  (m4.drain)
+    (m2a.gate)      -|                  (m1a.gate)
+    (intersection of m1a.gate--m2a.gate and m6b.drain--m0.drain)
+                    node[circ](){}
+
+    (m6d.gate)      -|                  (m6c.gate)
+                    node[circ](){}
+                    |-                  (m6c.drain)
+    ++(\xe-\xm,0)   node[circ](){}
+                    -|                  (m6b.drain)
+
+    (m4.source)++(1,0)  -| (m5a.source) -| ++(\xa-\xb-1,0)
+    (m0.source)++(\xf-\xe+1,0) -| (mb.source) -| ++(-1,0)
+    ;
+    \draw
+    (voc.out)       node[anchor=south]{$V_{oc}$}
+                    -|                  (opamp.+)
+    (opamp.-)       -|                  ++(0.1,0)
+                    node[ocirc](){$1.5\uV$}
+    (opamp.out)     |-                  (m2.source)
+    (voc.in 1)      -|                  ++(-0.1,0)
+                    node[ocirc]{}
+                    node[anchor=east](){$V_{op}$}
+    (voc.in 2)      -|                  ++(-0.1,0)
+                    node[ocirc]{}
+                    node[anchor=east](){$V_{om}$}
+    (m1.gate)       -|                  ++(-0.1,0)
+                    node[ocirc]{}
+                    node[anchor=east](){$V_{ip}$}
+    (m2.gate)       -|                  ++(0.1,0)
+                    node[ocirc]{}
+                    node[anchor=west](){$V_{im}$}
+    (m1a.drain)     -|                  ++(-0.4,0)
+                    node[ocirc]{}
+                    node[anchor=east](){$V_{op}$}
+    (m2a.drain)     -|                  ++(0.4,0)
+                    node[ocirc]{}
+                    node[anchor=west](){$V_{om}$}
+    ;
+  \end{circuitikz}
+  }
+\end{center}
+
+
+
+\end{document}
