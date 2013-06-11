@@ -1,0 +1,13 @@
+*~
+*.swp
+*.pyc
+*.asv
+
+*.lis
+
+*.ac*
+*.ic*
+*.pa*
+*.sw*
+*.st*
+*.tr*
