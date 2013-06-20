@@ -45,24 +45,32 @@ xt  xp  xm  yp  ym  difflooptest ai='ai' av='av'
 
 .op
 
+{{?ac?
 * ac
 vsd vsd  0
 .ac dec 10 1e3 10e9
 .alter
 .param ai=0 av=1
+ }}
 
+{{?noise?
 * noise
-*vsd vsd  0  ac
-*.ac dec 100 1e3 100e9
-*.noise v(vod) vsd
+vsd vsd  0  ac
+.ac dec 100 1e3 100e9
+.noise v(vod) vsd
+ }}
 
+{{?tr?
 * transient
-*vsd vsd 0 pulse 0 'input_diff' 0 0.5n 0.5n 100n 200n 
-*.tran 0.1n 100n
+vsd vsd 0 pulse 0 'input_diff' 0 0.5n 0.5n 100n 200n 
+.tran 0.1n 100n
+ }}
 
+{{?dc?
 * dc
-*vsd vsd  0  0
-*.dc vsd -10.005m 10m 10u
+vsd vsd  0  0
+.dc vsd -10.005m 10m 10u
+ }}
 
 .end
 
