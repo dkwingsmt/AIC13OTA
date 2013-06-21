@@ -8,10 +8,10 @@
 ******************************************************
 
 * input common mode
-.param input_common=1
+.param input_common=0.9
 
 * differential input voltage step
-.param input_diff=1
+.include 'input_diff.sp'
 ******************************************************
 
 
@@ -19,20 +19,21 @@
 *Circuit description
 ******************************************************
 
+.param kla=1.5
 .subckt ota vip vim vop vom vdd
 
 *param
 
 *main amplifier
-M0  vp  vg_cm 0   0    nch214                       l='ln' w='w0'
+M0  vp  vg_cm 0   0    nch214                       l='ln' w='w0*1.6'
 M1  vx  vim   vp  0    nch214                       l='ln' w='w1'
 M2  vy  vip   vp  0    nch214                       l='ln' w='w2'
-M1a vop vbb2  vx  0    nch214                       l='ln' w='w1a'
-M2a vom vbb2  vy  0    nch214                       l='ln' w='w2a'
-M3a vop vbb1  vm  vdd  pch214                       l='l3' w='w3a'
-M4a vom vbb1  vn  vdd  pch214                       l='l3' w='w4a'
-M3  vm  vbias vdd vdd  pch214                       l='l3' w='w3'
-M4  vn  vbias vdd vdd  pch214                       l='l3' w='w4'
+M1a vop vbb2  vx  0    nch214                       l='ln*1.5' w='w1a*1.5'
+M2a vom vbb2  vy  0    nch214                       l='ln*1.5' w='w2a*1.5'
+M3a vop vbb1  vm  vdd  pch214                       l='lp*1.5' w='w3a*kla'
+M4a vom vbb1  vn  vdd  pch214                       l='lp*1.5' w='w4a*kla'
+M3  vm  vbias vdd vdd  pch214                       l='lp' w='w3'
+M4  vn  vbias vdd vdd  pch214                       l='lp' w='w4'
 
 *vbb1
 M5a vbb1_mid vbb1   vdd      vdd      pch214        l='lp' w='w5a'

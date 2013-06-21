@@ -5,14 +5,14 @@ if nargin == 0
 end
 
 % load signals from first run and calculate Ti
-m = loadsig('ota_test_ac.ac0');
+m = loadsig('../workspace/ota_test_ac.ac0');
 %m = loadsig('ota2_example_test.ac0');
 
 %lssig(m)
 ti = (evalsig(m, 'I_xt_vyp')-evalsig(m, 'I_xt_vym'))./(evalsig(m, 'I_xt_vxp')-evalsig(m, 'I_xt_vxm'));
 
 % load signals from second run and calculate Tv
-m = loadsig('ota_test_ac.ac1');
+m = loadsig('../workspace/ota_test_ac.ac1');
 %m = loadsig('ota2_example_test.ac1');
 
 %lssig(m)

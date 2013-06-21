@@ -5,7 +5,7 @@ if nargin == 0
 end
 
 % Load hspice output
-m = loadsig('ota_test_noise.ac0');
+m = loadsig('../workspace/ota_test_noise.ac0');
 
 % List available signals
 %lssig(m)

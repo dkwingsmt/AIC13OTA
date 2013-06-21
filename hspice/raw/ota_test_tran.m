@@ -5,7 +5,7 @@ if nargin == 0
 end
 
 % load hspice output
-m = loadsig('ota_test_tr.tr0');
+m = loadsig('../workspace/ota_test_tr.tr0');
 % list available signals
 %lssig(m)
 
@@ -68,7 +68,7 @@ if do_plot ~= 0
     set(gca,'LineWidth',1);
     xlabel('Time  [ns]');
     ylabel('Error [%]');
-    axis([0 200 -5 5]);
+    axis([0 100 -5 5]);
     grid;
     line([0 t(end)], [static_plus static_plus]);
     line([0 t(end)], [static_minus static_minus]);
