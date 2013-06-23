@@ -21,6 +21,17 @@ else
     end
 end
 
+! cat ../workspace/ota_test_ac.lis | bash ../get_power > ../workspace/power
+f = fopen('../workspace/power');
+if f == -1
+    fprintf('## Invalid file workspace/power ##');
+    power = 'NaN';
+else
+    power = fgetl(f);
+    fclose(f);
+end
+
+
 fprintf('[Read from file] input_diff = %f\n', input_diff_read);
 [fc, pm, t0] = ota_test_ac(do_plot);
 [DR] = ota_test_noise(do_plot);
@@ -31,6 +42,7 @@ fprintf('fc = %0.2fMHz, PM = %0.2fdeg, T0 = %0.0f\n', fc, pm, t0)
 fprintf('DR = %2.2fdB\n', DR)
 fprintf('Vswing = %2.3fV\n', vswing)
 fprintf('es = %2.2f%%, ts = %2.2fns\n', es, ts)
+fprintf('power = %s\n', power)
 
 cd ..
 
