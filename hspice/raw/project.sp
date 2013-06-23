@@ -38,9 +38,9 @@ M4a vom vbb1  vn  vdd  pch214                       l='lp*1.5' w='w4a*kla'
 M3  vm  vbias vdd vdd  pch214                       l='lp' w='w3'
 M4  vn  vbias vdd vdd  pch214                       l='lp' w='w4'
 
-vbb1source vbb1 0 'vbb1_val'
-vbb2source vbb2 0 'vbb2_val'
-vbiassource vbias 0 'vbias_val'
+*vbb1source vbb1 0 'vbb1_val'
+*vbb2source vbb2 0 'vbb2_val'
+*vbiassource vbias 0 'vbias_val'
 
 *vbb1
 M5a vbb1_mid vbb1   vdd      vdd      pch214        l='lp' w='w5a'
