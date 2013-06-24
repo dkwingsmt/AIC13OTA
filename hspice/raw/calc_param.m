@@ -8,19 +8,19 @@ PM=72;
 %noise_gamma=1;
 noise_gamma=2/3;    % Long channel
 
-st_err=0.09/100;
-dy_err=0.1/100;
-dy_time=5e-9;
+st_err=0.1/100;
+dy_err=0.05/100;
+dy_time=10e-9;
 DR=87;
 cs=4e-12;
 cf=0.5*cs;
 cg12=k_cg12_cs*cs;
 
 %%%%% Read external files %%%%%
-gmr0_struct=loadsigstruct('findgmr0.ac0');
+gmr0_struct=loadsigstruct('findgmr0.sw0');
 gmr0_l=gmr0_struct.sw_l;
-gmr0_p=gmr0_struct.gmr0p;
-gmr0_n=gmr0_struct.gmr0n;
+gmr0_p=gmr0_struct.gmrop;
+gmr0_n=gmr0_struct.gmron;
 
 gmid_ft_struct=loadsigstruct('findgmid_ft.sw0');
 gmid_ft_gmidn=abs(gmid_ft_struct.gm_idn);
@@ -38,7 +38,7 @@ gmid_idw_idwp=gmid_idw_struct.id_wp;
 beta=cf/(cf+cs+cg12)  % P282,335
 ntot=0.5*vswing^2/10^(DR/10)   %7-110
 
-cltot=(2*kbT*noise_gamma/beta)/ntot*1.2    %8-12
+cltot=(2*kbT*noise_gamma/beta)/ntot    %8-12
 cl=cltot-(1-beta)*cf   % Below 8-9
 fprintf('C_L is %.3fpF\n', cl*1e12)
 if cl < 2e-12
@@ -46,7 +46,7 @@ if cl < 2e-12
 end
 
 av0=1/st_err/beta    %7-102
-gmr0=2*sqrt(av0)   %7-103
+gmr0=sqrt(2*av0)   %7-103
 fprintf('Intrinsic gain is %.3f\n', gmr0);
 
 ln=interp1(gmr0_n, gmr0_l, gmr0)

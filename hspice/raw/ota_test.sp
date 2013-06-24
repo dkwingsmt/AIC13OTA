@@ -47,7 +47,7 @@ xt  xp  xm  yp  ym  difflooptest ai='ai' av='av'
 
 {{?ac?
 * ac
-vsd vsd  0
+vsd vsd  0 ac=1
 .ac dec 10 1e3 10e9
 .alter
 .param ai=0 av=1
