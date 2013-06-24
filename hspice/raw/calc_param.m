@@ -4,13 +4,13 @@ vswing = 2;
 T=25+273;
 kb=1.38e-23;
 kbT=kb*T;
-PM=72;
+PM=80;
 %noise_gamma=1;
 noise_gamma=2/3;    % Long channel
 
 st_err=0.1/100;
 dy_err=0.05/100;
-dy_time=10e-9;
+dy_time=5e-9;
 DR=87;
 cs=4e-12;
 cf=0.5*cs;
@@ -87,9 +87,9 @@ fprintf('W3 is %.3fum\n', w3);
 
 %Ratio
 k_0_b=20;
-k_5_b=10;
-k_7_b=10;
-k_6_1=0.2;
+k_5_b=2;
+k_7_b=2;
+k_6_1=0.1;
 k_5b_5a=1/5;
 
 k_1_b=k_0_b/(k_6_1+2);
