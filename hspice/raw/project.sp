@@ -33,36 +33,38 @@
 .param m34w=1.2
 .param m12l=1.1
 .param m12w=1
+.param sizeba=0.8
+.param sizeb1=0.8
 
 *main amplifier
 M0  vp  vg_cm 0   0    nch214                       l='ln' w='w0'
-M1  vx  vim   vp  0    nch214                       l='ln*m12l' w='w1*m12w'
-M2  vy  vip   vp  0    nch214                       l='ln*m12l' w='w2*m12w'
-M1a vop vbb2  vx  0    nch214                       l='ln*m12al' w='w1a*m12aw'
-M2a vom vbb2  vy  0    nch214                       l='ln*m12al' w='w2a*m12aw'
-M3a vop vbb1  vm  vdd  pch214                       l='lp*m34al' w='w3a*m34aw'
-M4a vom vbb1  vn  vdd  pch214                       l='lp*m34al' w='w4a*m34aw'
-M3  vm  vbias vdd vdd  pch214                       l='lp*m34l' w='w3*m34w'
-M4  vn  vbias vdd vdd  pch214                       l='lp*m34l' w='w4*m34w'
+M1  vx  vim   vp  0    nch214                       l='l12' w='w1'
+M2  vy  vip   vp  0    nch214                       l='l12' w='w2'
+M1a vop vbb2  vx  0    nch214                       l='l1a' w='w1a'
+M2a vom vbb2  vy  0    nch214                       l='l1a' w='w2a'
+M3a vop vbb1  vm  vdd  pch214                       l='l3a' w='w3a'
+M4a vom vbb1  vn  vdd  pch214                       l='l3a' w='w4a'
+M3  vm  vbias vdd vdd  pch214                       l='l3' w='w3'
+M4  vn  vbias vdd vdd  pch214                       l='l3' w='w4'
 
 *vbb1source vbb1 0 'vbb1_val'
 *vbb2source vbb2 0 'vbb2_val'
 *vbiassource vbias 0 'vbias_val'
 
 *vbb1
-M5a vbb1_mid vbb1   vdd      vdd      pch214        l='lp' w='w5a'
-M5b vbb1     vbb1   vbb1_mid vdd      pch214        l='lp' w='w5b'
+M5a vbb1_mid vbb1   vdd      vdd      pch214        l='lbb1p' w='w5a'
+M5b vbb1     vbb1   vbb1_mid vdd      pch214        l='lbb1p' w='w5b'
 M5c vbb1     vg_cm  0        0        nch214        l='ln' w='w5c'
 
 *vbb2
-M6a vbb2_up   vbias vdd       vdd        pch214     l='lp' w='w6a'
-M6b vbb2      vbb1  vbb2_up   vdd        pch214     l='lp' w='w6b'
-M6c vbb2      vbb2  vbb2_down 0          nch214     l='ln' w='w6c'
-M6d vbb2_down vbb2  vp        0          nch214     l='ln' w='w6d'
+M6a vbb2_up   vbias vdd       vdd        pch214     l='lbb2p1' w='w6a'
+M6b vbb2      vbb1  vbb2_up   vdd        pch214     l='lbb2p2' w='w6b'
+M6c vbb2      vbb2  vbb2_down 0          nch214     l='lbb2n' w='w6c'
+M6d vbb2_down vbb2  vp        0          nch214     l='lbb2n' w='w6d'
 
 *vbias
-M7a vbias_mid vbias  vdd       vdd       pch214     l='lp' w='w7a'
-M7b vbias     vbb1   vbias_mid vdd       pch214     l='lp' w='w7b'
+M7a vbias_mid vbias  vdd       vdd       pch214     l='lbiasp' w='w7a'
+M7b vbias     vbb1   vbias_mid vdd       pch214     l='lbiasp' w='w7b'
 M7c vbias     vg_cm  0         0         nch214     l='ln' w='w7c'
 
 *current mirror
