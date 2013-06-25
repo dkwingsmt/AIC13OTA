@@ -8,7 +8,7 @@
 ******************************************************
 
 * input common mode
-.param input_common=1.1
+.param input_common=0.9
 
 * differential input voltage step
 .include 'input_diff.sp'
