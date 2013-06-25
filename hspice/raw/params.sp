@@ -29,7 +29,7 @@
 .param l3a=8.8673e-07
 .param l3=6.3338e-07
 .param lbb1p=8.8673e-07
-.param lbiasp=7.6006e-07
-.param lbb2p1=7.6006e-07
+.param lbiasp=6.3338e-07
+.param lbb2p1=6.3338e-07
 .param lbb2p2=8.8673e-07
 .param lbb2n=6.5627e-07
