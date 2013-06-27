@@ -1,3 +1,5 @@
+cd raw
+
 k_cg12_cs = 0.5;
 vswing = 2;
 
@@ -86,35 +88,24 @@ w3=id12/idw3;       % id3 = id12
 %fprintf('W3 is %.3fum\n', w3);
 
 
-
-
-
-
-
-% m12al=1.1;
-% m12aw=1.3;
-% m34al=1.3;
-% m34aw=1.2;
-% m12l=1.1;
-% m12w=0.8;
-% m34l=1;
-% m34w=1.5;
-% cl=2e-12;
-% cf=3.1e-12;
-% cs=cf*2;
-
-
-m12al=1.2;
-m12aw=1.3;
-m34al=1;
-m34aw=1;
-m12l=1.1;
-m12w=0.8;
-m34l=1;
-m34w=1.37;
 cl=2e-12;
 cf=3e-12;
 cs=cf*2;
+
+% NEW
+
+m12al=1.3;
+m12aw=1.5;
+m34al=1;
+m34aw=0.7;
+m12l=1;
+m12w=0.8;
+m34l=1;
+m34w=1.35;
+cl=2.3e-12;
+cf=3.3e-12;
+cs=cf*2;
+
 w12=w12*m12w;
 l12=ln*m12l;
 w1a=w1a*m12aw;
@@ -128,6 +119,7 @@ lbiasp=lp*m34l;
 lbb2p1=lp*m34l;
 lbb2p2=lp*m34al;
 lbb2n=ln*m12al;
+% END NEW
 
 
 %Ratio
@@ -211,3 +203,4 @@ end
 fprintf('Saved to file.\n')
 
 
+cd ..
