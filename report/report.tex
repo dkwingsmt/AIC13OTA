@@ -23,7 +23,7 @@
 \usepackage{makecell}
 \usepackage[americanvoltages,americancurrents,americanresistors,%
     americaninductors,americanports,siunitx,emptydiodes,%
-  arrowmos]{circuitikz}
+  arrowmos,nopmosdot]{circuitikz}
 \usepackage{tikz}
 \usepackage{siunitx}
 \usepackage{multirow}
@@ -145,140 +145,153 @@ backgroundcolor=\color{gray},
 \input{mos_sizes.tex}
 \newcommand{\moslabel}[3]{\shortstack{$\dM{#1}$\\{\scriptsize$#2$}\\{\scriptsize$#3$}}}
 
-\title{Analog Integrated Circuits Homework 7}
-\author{牟瞳 2010011204 微02}
-
 \begin{document}
 
-aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+\begin{titlepage}
 
-\begin{center}
-  \scalebox{0.7}{
-  \begin{circuitikz}
-    \pgfmathsetmacro{\xa}{0}        % B
-    \pgfmathsetmacro{\xb}{2}        % left bias 1
-    \pgfmathsetmacro{\xc}{3.5}      % left bias 2
-    \pgfmathsetmacro{\xd}{5.7}      % M1
-    \pgfmathsetmacro{\xe}{7.2}      % M0
-    \pgfmathsetmacro{\xm}{7.7}      % M8CD
-    \pgfmathsetmacro{\xf}{8.7}      % M2
+% 首行的位置往上调整。但vspace前面需要有东西才会起效。
+\phantom{Start!}
+\vspace{-1.7cm}
 
-    \pgfmathsetmacro{\xfb}{11.8}      % VOC feedback
+\begin{flushleft}
 
-    \pgfmathsetmacro{\ya}{0  }
-    \pgfmathsetmacro{\yb}{2  }      % M1,2
-    \pgfmathsetmacro{\yc}{2.5}
-    \pgfmathsetmacro{\yd}{4  }
-    \pgfmathsetmacro{\ye}{5.0}      % M1,2a
-    \pgfmathsetmacro{\yf}{6.6}      % load lower
-    \pgfmathsetmacro{\yg}{8.1}      % load upper
-    \draw
-    (\xa, \ya)      node[nmos,xscale=-1](mb){}      ++(-0.5,0.3)node[](){\moslabel{B}{\sizeb}{\gmidb}}
+\emph{\Large 清华大学微纳电子系}\\[0.2cm]
+\emph{\Large 模拟集成电路分析与设计}\\[4.2cm]     % 课程
 
-    (\xb, \ya)      node[nmos,xscale= 1](m5c){}     ++(-0.7,0.6)node[](){\moslabel{5C}{\sizeFc}{\gmidFc}}
-    (\xb, \yf)      node[pmos,xscale=-1](m5b){}     ++(-0.5,0.3)node[](){\moslabel{5B}{\sizeFb}{\gmidFb}}
-    (\xb, \yg)      node[pmos,xscale=-1](m5a){}     ++(-0.5,0.3)node[](){\moslabel{5A}{\sizeFa}{\gmidFa}}
+% Title
+{ \HUGE \bfseries OTA放大器设计}\\[0.4cm]    % 主标题
+{ \huge \bfseries 设计报告}             % 副标题
 
-    (\xc, \ya)      node[nmos,xscale= 1](m7c){}     ++(-0.7,0.6)node[](){\moslabel{7C}{\sizeHc}{\gmidHc}}
-    (\xc, \yf)      node[pmos,xscale=-1](m7b){}     ++(-0.4,0.3)node[](){\moslabel{7B}{\sizeHb}{\gmidHb}}
-    (\xc, \yg)      node[pmos,xscale=-1](m7a){}     ++(-0.4,0.3)node[](){\moslabel{7A}{\sizeHa}{\gmidHa}}
+\end{flushleft}
 
-    (\xd, \yb)      node[nmos,xscale= 1](m1){}      ++(-0.7,0.3)node[](){\moslabel{1}{\sizeB}{\gmidB}}
-    (\xd, \ye)      node[nmos,xscale=-1](m1a){}     ++(-0.5,0.3)node[](){\moslabel{1A}{\sizeBa}{\gmidBa}}
-    (\xd, \yf)      node[pmos,xscale= 1](m3a){}     ++(-0.7,0.6)node[](){\moslabel{3A}{\sizeDa}{\gmidDa}}
-    (\xd, \yg)      node[pmos,xscale= 1](m3){}      ++(-0.7,0.6)node[](){\moslabel{3}{\sizeD}{\gmidD}}
+\vfill
 
-    (\xe, \ya)      node[nmos,xscale= 1](m0){}      ++(-0.7,0.6)node[](){\moslabel{0}{\sizeA}{\gmidA}}
-    (\xm, \yc)      node[nmos,xscale= 1](m6d){}     ++(-0.7,0.6)node[](){\moslabel{6D}{\sizeGd}{\gmidGd}}
-    (\xm, \yd)      node[nmos,xscale= 1](m6c){}     ++(-0.7,0.6)node[](){\moslabel{6C}{\sizeGc}{\gmidGc}}
-    (\xe, \yf)      node[pmos,xscale= 1](m6b){}     ++(-0.7,0.6)node[](){\moslabel{6B}{\sizeGb}{\gmidGb}}
-    (\xe, \yg)      node[pmos,xscale= 1](m6a){}     ++(-0.7,0.6)node[](){\moslabel{6A}{\sizeGa}{\gmidGa}}
+\begin{flushright}
 
-    (\xf, \yb)      node[nmos,xscale=-1](m2){}      ++(-0.4,0.2)node[](){\moslabel{2}{\sizeC}{\gmidC}}
-    (\xf, \ye)      node[nmos,xscale= 1](m2a){}     ++(-0.7,0.6)node[](){\moslabel{2A}{\sizeCa}{\gmidCa}}
-    (\xf, \yf)      node[pmos,xscale= 1](m4a){}     ++(-0.7,0.6)node[](){\moslabel{4A}{\sizeEa}{\gmidEa}}
-    (\xf, \yg)      node[pmos,xscale= 1](m4){}      ++(-0.7,0.6)node[](){\moslabel{4}{\sizeE}{\gmidE}}
+{
+\newcommand{\pillar}{ {\Huge \phantom{A}} } %一种统一的方法提高行高
+\large \begin{tabular}{lll}
+  \pillar 姓名 & 孙泽雷 & 2010011210 \\
+  \pillar&牟瞳 & 2010011204          \\
+  \pillar&吕若辰 & 2010011201        \\
+  \pillar 班级 & 微02 &               \\
+  \pillar 报告日期 & \multicolumn{2}{l}{2013年6月28日}  \\
+\end{tabular}
+}
 
-    (\xfb, \yd)     node[american and port](voc){}  ++(-0.7,0.3)node[](){}
-    (\xfb, \yb-1)     node[op amp,yscale=-1,xscale=-1](opamp){} ++(-0.7,0.3)node[](){}
-    ;
-    \draw 
-    (m5a.source)++(\xa-\xb, 0)   to[I=$I_B$]   ++(0, -2)
-                            to[-]       (mb.drain) ;
+\end{flushright}
 
-    \draw 
-    (mb.drain)      node[circ](){}
-                    -|                  (mb.gate)
-                    node[circ](){}
-                    -|                  (m5c.gate)      
-                    -|                  (m0.gate)
+\end{titlepage}
 
-    (m5c.drain)     -|                  (m5b.drain)
-                    node[circ](){}
-                    -|                  (m5b.gate)
-                    node[circ](){}
-                    -|                  (m5a.gate)
-    (m5b.source)    -|                  (m5a.drain)
-    (m5b.gate)      -|                  (m4a.gate)
+\newpage
 
-    (m7c.drain)     -|                  (m7b.drain)
-                    node[circ](){}
-                    -|                  (m7a.gate)
-                    node[circ](){}
-    (m7b.source)    -|                  (m7a.drain)
-    (m7a.gate)      -|                  (m4.gate)
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhead{}    % 清空设置
+\fancyhead[HL]{清华大学电子工程系}
+\fancyhead[HR]{数字逻辑与处理器基础实验}    %课程
 
-    (m3a.source)    -|                  (m3.drain)
-    (m1a.drain)     -|                  (m3a.drain)
-    (m1.drain)      -|                  (m1a.source)
-    (m1.source)     -|                  (m6d.source)
-    (m1.source)++(\xm-\xd,0)node[circ](){}
-    (m2.source)     -|                  (m0.drain)
-    (m2.source)++(\xe-\xf,0)node[circ](){}
-    (m2.drain)      -|                  (m2a.source)
-    (m2a.drain)     -|                  (m4.drain)
-    (m2a.gate)      -|                  (m1a.gate)
-    (intersection of m1a.gate--m2a.gate and m6b.drain--m0.drain)
-                    node[circ](){}
+% Page 1: Outline of your design, justifications of key design decisions; 
+% comparison with alternatives.
 
-    (m6d.gate)      -|                  (m6c.gate)
-                    node[circ](){}
-                    |-                  (m6c.drain)
-    ++(\xe-\xm,0)   node[circ](){}
-                    -|                  (m6b.drain)
+\section{综述}
 
-    (m4.source)++(1,0)  -| (m5a.source) -| ++(\xa-\xb-1,0)
-    (m0.source)++(\xf-\xe+1,0) -| (mb.source) -| ++(-1,0)
-    ;
-    \draw
-    (voc.out)       node[anchor=south]{$V_{oc}$}
-                    -|                  (opamp.+)
-    (opamp.-)       -|                  ++(0.1,0)
-                    node[ocirc](){$1.5\uV$}
-    (opamp.out)     |-                  (m2.source)
-    (voc.in 1)      -|                  ++(-0.1,0)
-                    node[ocirc]{}
-                    node[anchor=east](){$V_{op}$}
-    (voc.in 2)      -|                  ++(-0.1,0)
-                    node[ocirc]{}
-                    node[anchor=east](){$V_{om}$}
-    (m1.gate)       -|                  ++(-0.1,0)
-                    node[ocirc]{}
-                    node[anchor=east](){$V_{ip}$}
-    (m2.gate)       -|                  ++(0.1,0)
-                    node[ocirc]{}
-                    node[anchor=west](){$V_{im}$}
-    (m1a.drain)     -|                  ++(-0.4,0)
-                    node[ocirc]{}
-                    node[anchor=east](){$V_{op}$}
-    (m2a.drain)     -|                  ++(0.4,0)
-                    node[ocirc]{}
-                    node[anchor=west](){$V_{om}$}
-    ;
-  \end{circuitikz}
-  }
-\end{center}
+本电路设计了一个低功耗OTA放大器。
 
+采用的基本电路是Telescope单级放大器，它的优点是在具有较大增益的同时，
+功耗较低。其缺点是比起折叠Cascode放大器而言摆幅较低，从而导致动态增益
+的目标会更难完成，不过由于本次设计目标中动态增益的要求还算适中，
+为了达到更低功耗的目的，仍采用Telescope放大电路。设计的过程也表明，
+设计时的主要限制因素并非动态增益（而是静态误差和动态时间之间的折衷）。
+
+采用了基于理想压控电流源的共模反馈，共模基准电压为$1.6\uV$。
+
+\newpage
+
+\section{电路结构及参数}
+
+% Page 2: Schematic diagram of final design, with component values and bias 
+% currents clearly labeled. Show component values right next to the components, 
+% and currents next to the branches (i.e., absolutely, positively do not make us 
+% refer to a look-up table). Annotate all transistors with the chosen gm/ID value.
+
+电路图及各项器件的参数如图\ref{circuit}。
+\begin{figure}[htb!]
+  \centering
+  \input{circuit.tex}
+  \caption{最终电路结构及参数}
+  \label{circuit}
+\end{figure}
+
+\newpage
+
+% Pages 3-5: Calculation of key design parameters, such as transconductances, 
+% bias currents, etc.  Be sure to include a calculation of the circuit’s settling 
+% time. Compare hand calculated values with final HSpice values in a table and 
+% discuss discrepancies. Make sure to include the total power dissipation of your 
+% design (calculation and HSpice). 
+% This is one of the most important sections of your report! The lowest power 
+% designs will not automatically score the highest grades. The methodology you 
+% used to justify your design choices and component values is far more important 
+% (see section on point distribution below).
+
+\section{设计过程}
+\subsection{理论分析}
+
+\subsection{手工调整}
+
+\newpage
+
+\section{电路性能}
+环路增益如图
+
+% Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
+% low frequency loop gain, the loop crossover frequency and the phase margin.
+
+\newpage
+
+% Page 7: Plots the simulated settling transient of Vod (no zoom, show the 
+% entire waveform). In a separate subplot, show the % error of the differential 
+% output voltage relative to the ideal output voltage. Zoom into the relevant 
+% region of the settling, i.e. clearly demonstrate that your
+% design settles within spec. Annotate the achieved settling time and static 
+% settling error. For simplicity, we use the error at t=30ns as an estimate of 
+% the static settling error.  
+
+\newpage
+
+% Page 8: Plot the common mode output voltage versus time during transient 
+% settling of the circuit. In separate subplots each, also show the differential 
+% output current of the OTA, and the differential input to the OTA (Vid in Figure 1).
+
+\newpage
+
+% Page 9: Plot of the noise power spectral density at the OTA output (Vod) and 
+% noise integral.  Annotate the total integrated noise value and the achieved 
+% dynamic range.  
+
+\newpage
+
+% Page 10: Output range. Simulation plot showing the differential open loop DC 
+% gain Vod/Vid of the amplifier. Mark the differential output voltage at which 
+% the gain has dropped by 30%.  This value should be larger than the peak output 
+% voltage used in your dynamic range calculation.
+
+\newpage
+
+% Page 11-12: Results of corner simulations. Tabulate your circuit’s performance 
+% for the slow/hot and fast/cold corner. Include settling time, static error, 
+% and any other parameter that you find noteworthy. Include the %-changes with 
+% respect to nominal conditions in your table.
+% In case the circuit is non-functional in these corners, investigate and explain 
+% the problem (no need to fix the circuit). Include selected interesting plots 
+% documenting corner performance and/or issues.
+
+\newpage
+
+% Page 13: Comments and Conclusion. Here, you can convey issues you may have had, 
+% or things you’ve learned/not learned in this project.
+\section{结论与总结}
 
 
 \end{document}

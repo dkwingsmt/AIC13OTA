@@ -1,0 +1,134 @@
+\begin{center}
+  \scalebox{0.7}{
+  \begin{circuitikz}
+    \pgfmathsetmacro{\xa}{0}        % B
+    \pgfmathsetmacro{\xb}{2.2}        % left bias 1
+    \pgfmathsetmacro{\xc}{4.4}      % left bias 2
+    \pgfmathsetmacro{\xd}{7.0}      % M1
+    \pgfmathsetmacro{\xe}{8.9}      % M0
+    \pgfmathsetmacro{\xm}{9.6}      % M6CD
+    \pgfmathsetmacro{\xf}{10.6}      % M2
+
+    \pgfmathsetmacro{\xfb}{13.0}      % VOC feedback
+
+    \pgfmathsetmacro{\ya}{0  }
+    \pgfmathsetmacro{\yb}{4  }      % M1,2
+    \pgfmathsetmacro{\yc}{4.5}
+    \pgfmathsetmacro{\yd}{6  }
+    \pgfmathsetmacro{\ye}{7.0}      % M1,2a
+    \pgfmathsetmacro{\yf}{12.6}      % load lower
+    \pgfmathsetmacro{\yg}{14.1}      % load upper
+    \draw
+    (\xa, \ya)      node[nmos,xscale=-1](mb){}      ++(-0.8,+1.3)node[](){\moslabel{B}{\sizeb}{\gmidb}}
+
+    (\xb, \ya)      node[nmos,xscale= 1](m5c){}     ++(-0.8,+1.3)node[](){\moslabel{5C}{\sizeFc}{\gmidFc}}
+    (\xb, \yf)      node[pmos,xscale=-1](m5b){}     ++(-0.8,-0.9)node[](){\moslabel{5B}{\sizeFb}{\gmidFb}}
+    (\xb, \yg)      node[pmos,xscale=-1](m5a){}     ++(-0.5,+1.3)node[](){\moslabel{5A}{\sizeFa}{\gmidFa}}
+
+    (\xc, \ya)      node[nmos,xscale= 1](m7c){}     ++(-0.8,+1.0)node[](){\moslabel{7C}{\sizeHc}{\gmidHc}}
+    (\xc, \yf)      node[pmos,xscale=-1](m7b){}     ++(-0.8,-0.9)node[](){\moslabel{7B}{\sizeHb}{\gmidHb}}
+    (\xc, \yg)      node[pmos,xscale=-1](m7a){}     ++(-0.4,+1.3)node[](){\moslabel{7A}{\sizeHa}{\gmidHa}}
+
+    (\xd, \yb)      node[nmos,xscale= 1](m1){}      ++(-0.8,+0.9)node[](){\moslabel{1}{\sizeB}{\gmidB}}
+    (\xd, \ye)      node[nmos,xscale=-1](m1a){}     ++(-0.8,-0.0)node[](){\moslabel{1A}{\sizeBa}{\gmidBa}}
+    (\xd, \yf)      node[pmos,xscale= 1](m3a){}     ++(-0.8,-0.9)node[](){\moslabel{3A}{\sizeDa}{\gmidDa}}
+    (\xd, \yg)      node[pmos,xscale= 1](m3){}      ++(-0.7,+1.3)node[](){\moslabel{3}{\sizeD}{\gmidD}}
+
+    (\xe, \ya)      node[nmos,xscale= 1](m0){}      ++(-0.8,+1.0)node[](){\moslabel{0}{\sizeA}{\gmidA}}
+    (\xm, \yc)      node[nmos,xscale= 1](m6d){}     ++(-1.8,+0.1)node[](){\moslabel{6D}{\sizeGd}{\gmidGd}}
+    (\xm, \yd)      node[nmos,xscale= 1](m6c){}     ++(-1.8,+0.0)node[](){\moslabel{6C}{\sizeGc}{\gmidGc}}
+    (\xe, \yf)      node[pmos,xscale= 1](m6b){}     ++(-0.8,-0.9)node[](){\moslabel{6B}{\sizeGb}{\gmidGb}}
+    (\xe, \yg)      node[pmos,xscale= 1](m6a){}     ++(-0.7,+1.3)node[](){\moslabel{6A}{\sizeGa}{\gmidGa}}
+
+    (\xf, \yb)      node[nmos,xscale=-1](m2){}      ++(+0.8,+0.9)node[](){\moslabel{2}{\sizeC}{\gmidC}}
+    (\xf, \ye)      node[nmos,xscale= 1](m2a){}     ++(+0.8,-0.0)node[](){\moslabel{2A}{\sizeCa}{\gmidCa}}
+    (\xf, \yf)      node[pmos,xscale= 1](m4a){}     ++(-0.8,-0.9)node[](){\moslabel{4A}{\sizeEa}{\gmidEa}}
+    (\xf, \yg)      node[pmos,xscale= 1](m4){}      ++(-0.3,+1.3)node[](){\moslabel{4}{\sizeE}{\gmidE}}
+
+    (\xfb, \yd)     node[american and port,xscale=0.5,yscale=0.5](voc){}  ++(-0.7,0.3)node[](){}
+    (\xfb, \yb-1)     node[op amp,yscale=-0.5,xscale=-0.5](opamp){} ++(-0.7,-0.6)node[](){$g=10\umS$}
+
+    (m5c.drain)++(0, 3) node[currarrow,rotate=-90](){}      ++(-0.7,0.6)node[](){$I_5=\idFa$}
+    (m7c.drain)++(0, 2) node[currarrow,rotate=-90](){}      ++(-0.7,0.6)node[](){$I_7=\idHa$}
+    (m1a.drain)++(0, 2) node[currarrow,rotate=-90](){}      ++(-0.7,0.6)node[](){$I_1=\idDa$}
+    (m6b.drain)++(0,-3) node[currarrow,rotate=-90](){}      ++(-0.7,0.6)node[](){$I_6=\idGa$}
+    (m2a.drain)++(0, 2) node[currarrow,rotate=-90](){}      ++(-0.7,0.6)node[](){$I_2=\idEa$}
+    (m0.drain)++(0, 1)  node[currarrow,rotate=-90](){}      ++(-0.7,0.6)node[](){$I_0=\idA$}
+    ;
+    \draw 
+    (m5a.source)++(\xa-\xb, 0)   to[I]   ++(0, -2) 
+                    +(-1.3,0.2)       node[](){$I_B=\idb$}
+                    +(0,0) to[-]       (mb.drain);
+
+    \draw 
+    (mb.drain)      node[circ](){}
+                    -|                  (mb.gate)
+                    node[circ](){}
+                    -|                  (m5c.gate)      
+                    -|                  (m0.gate)
+
+    (m5c.drain)     -|                  (m5b.drain)
+                    node[circ](){}
+                    -|                  (m5b.gate)
+                    node[circ](){}
+                    -|                  (m5a.gate)
+    (m5b.source)    -|                  (m5a.drain)
+    (m5b.gate)      -|                  (m4a.gate)
+
+    (m7c.drain)     -|                  (m7b.drain)
+                    node[circ](){}
+                    -|                  (m7a.gate)
+                    node[circ](){}
+    (m7b.source)    -|                  (m7a.drain)
+    (m7a.gate)      -|                  (m4.gate)
+
+    (m3a.source)    -|                  (m3.drain)
+    (m1a.drain)     -|                  (m3a.drain)
+    (m1.drain)      -|                  (m1a.source)
+    (m1.source)     -|                  (m6d.source)
+    (m1.source)++(\xm-\xd,0)node[circ](){}
+    (m2.source)     -|                  (m0.drain)
+    (m2.source)++(\xe-\xf,0)node[circ](){}
+    (m2.drain)      -|                  (m2a.source)
+    (m2a.drain)     -|                  (m4.drain)
+    (m2a.gate)      -|                  (m1a.gate)
+    (intersection of m1a.gate--m2a.gate and m6b.drain--m0.drain)
+                    node[circ](){}
+
+    (m6d.gate)      -|                  (m6c.gate)
+                    node[circ](){}
+                    |-                  (m6c.drain)
+    ++(\xe-\xm,0)   node[circ](){}
+                    -|                  (m6b.drain)
+
+    (m4.source)++(1,0)  -| (m5a.source) -| ++(\xa-\xb-1,0)
+    (m0.source)++(\xf-\xe+1,0) -| (mb.source) -| ++(-1,0)
+    ;
+    \draw
+    (voc.out)       node[anchor=south]{$V_{oc}$}
+                    -|                  (opamp.+)
+    (opamp.-)       -|                  ++(0.3,0.0)     node[ocirc](){}
+                    ++(0.5,0.3)   node[](){$1.6\uV$}
+    (opamp.out)     |-                  (m2.source)
+    (voc.in 1)      -|                  ++(-0.1,0)
+                    node[ocirc]{}
+                    node[anchor=east](){$V_{op}$}
+    (voc.in 2)      -|                  ++(-0.1,0)
+                    node[ocirc]{}
+                    node[anchor=east](){$V_{om}$}
+    (m1.gate)       -|                  ++(-0.1,0)
+                    node[ocirc]{}
+                    node[anchor=east](){$V_{ip}$}
+    (m2.gate)       -|                  ++(0.1,0)
+                    node[ocirc]{}
+                    node[anchor=west](){$V_{im}$}
+    (m1a.drain)     |-                  ++(-0.4,+0.7)
+                    node[ocirc]{}
+                    node[anchor=east](){$V_{op}$}
+    (m2a.drain)     |-                  ++(0.4,+0.7)
+                    node[ocirc]{}
+                    node[anchor=west](){$V_{om}$}
+    ;
+  \end{circuitikz}
+  }
+\end{center}
