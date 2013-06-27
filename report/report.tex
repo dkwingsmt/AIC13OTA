@@ -111,6 +111,40 @@ backgroundcolor=\color{gray},
 \newcommand{\dR}[1]{\mathrm{R}_\mathrm{#1}}
 \newcommand{\dC}[1]{\mathrm{C}_\mathrm{#1}}
 
+%% circuitikz 
+\makeatletter
+\ctikzset{lx/.code args={#1 and #2}{ 
+  \pgfkeys{/tikz/circuitikz/bipole/label/name=\parbox{1cm}{\centering #1  \\ #2}}
+    \ctikzsetvalof{bipole/label/unit}{}
+    \ifpgf@circ@siunitx 
+        \pgf@circ@handleSI{#2}
+        \ifpgf@circ@siunitx@res 
+            \edef\pgf@temp{\pgf@circ@handleSI@val}
+            \pgfkeyslet{/tikz/circuitikz/bipole/label/name}{\pgf@temp}
+            \edef\pgf@temp{\pgf@circ@handleSI@unit}
+            \pgfkeyslet{/tikz/circuitikz/bipole/label/unit}{\pgf@temp}
+        \else
+        \fi
+    \else
+    \fi
+}}
+
+\ctikzset{lx^/.style args={#1 and #2}{ 
+    lx=#2 and #1,
+    \circuitikzbasekey/bipole/label/position=90 } 
+}
+
+\ctikzset{lx_/.style args={#1 and #2}{ 
+    lx=#1 and #2,
+    \circuitikzbasekey/bipole/label/position=-90 } 
+}
+\makeatother
+
+%% External resources
+\input{gmid_i.tex}
+\input{mos_sizes.tex}
+\newcommand{\moslabel}[3]{\shortstack{$\dM{#1}$\\{\scriptsize$#2$}\\{\scriptsize$#3$}}}
+
 \title{Analog Integrated Circuits Homework 7}
 \author{牟瞳 2010011204 微02}
 
@@ -139,31 +173,31 @@ aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
     \pgfmathsetmacro{\yf}{6.6}      % load lower
     \pgfmathsetmacro{\yg}{8.1}      % load upper
     \draw
-    (\xa, \ya)      node[nmos,xscale=-1](mb){}       ++(-0.5,0.3)node[](){$\dM{B}$}
+    (\xa, \ya)      node[nmos,xscale=-1](mb){}      ++(-0.5,0.3)node[](){\moslabel{B}{\sizeb}{\gmidb}}
 
-    (\xb, \ya)      node[nmos,xscale= 1](m5c){}     ++(-0.7,0.6)node[](){$\dM{5C}$}
-    (\xb, \yf)      node[pmos,xscale=-1](m5b){}     ++(-0.5,0.3)node[](){$\dM{5B}$}
-    (\xb, \yg)      node[pmos,xscale=-1](m5a){}     ++(-0.5,0.3)node[](){$\dM{5A}$}
+    (\xb, \ya)      node[nmos,xscale= 1](m5c){}     ++(-0.7,0.6)node[](){\moslabel{5C}{\sizeFc}{\gmidFc}}
+    (\xb, \yf)      node[pmos,xscale=-1](m5b){}     ++(-0.5,0.3)node[](){\moslabel{5B}{\sizeFb}{\gmidFb}}
+    (\xb, \yg)      node[pmos,xscale=-1](m5a){}     ++(-0.5,0.3)node[](){\moslabel{5A}{\sizeFa}{\gmidFa}}
 
-    (\xc, \ya)      node[nmos,xscale= 1](m7c){}     ++(-0.7,0.6)node[](){$\dM{7C}$}
-    (\xc, \yf)      node[pmos,xscale=-1](m7b){}     ++(-0.4,0.3)node[](){$\dM{7B}$}
-    (\xc, \yg)      node[pmos,xscale=-1](m7a){}     ++(-0.4,0.3)node[](){$\dM{7A}$}
+    (\xc, \ya)      node[nmos,xscale= 1](m7c){}     ++(-0.7,0.6)node[](){\moslabel{7C}{\sizeHc}{\gmidHc}}
+    (\xc, \yf)      node[pmos,xscale=-1](m7b){}     ++(-0.4,0.3)node[](){\moslabel{7B}{\sizeHb}{\gmidHb}}
+    (\xc, \yg)      node[pmos,xscale=-1](m7a){}     ++(-0.4,0.3)node[](){\moslabel{7A}{\sizeHa}{\gmidHa}}
 
-    (\xd, \yb)      node[nmos,xscale= 1](m1){}      ++(-0.7,0.3)node[](){$\dM{1 }$}
-    (\xd, \ye)      node[nmos,xscale=-1](m1a){}     ++(-0.5,0.3)node[](){$\dM{1A}$}
-    (\xd, \yf)      node[pmos,xscale= 1](m3a){}     ++(-0.7,0.6)node[](){$\dM{3A}$}
-    (\xd, \yg)      node[pmos,xscale= 1](m3){}      ++(-0.7,0.6)node[](){$\dM{3 }$}
+    (\xd, \yb)      node[nmos,xscale= 1](m1){}      ++(-0.7,0.3)node[](){\moslabel{1}{\sizeB}{\gmidB}}
+    (\xd, \ye)      node[nmos,xscale=-1](m1a){}     ++(-0.5,0.3)node[](){\moslabel{1A}{\sizeBa}{\gmidBa}}
+    (\xd, \yf)      node[pmos,xscale= 1](m3a){}     ++(-0.7,0.6)node[](){\moslabel{3A}{\sizeDa}{\gmidDa}}
+    (\xd, \yg)      node[pmos,xscale= 1](m3){}      ++(-0.7,0.6)node[](){\moslabel{3}{\sizeD}{\gmidD}}
 
-    (\xe, \ya)      node[nmos,xscale= 1](m0){}      ++(-0.7,0.6)node[](){$\dM{0 }$}
-    (\xm, \yc)      node[nmos,xscale= 1](m6d){}     ++(-0.7,0.6)node[](){$\dM{6D}$}
-    (\xm, \yd)      node[nmos,xscale= 1](m6c){}     ++(-0.7,0.6)node[](){$\dM{6C}$}
-    (\xe, \yf)      node[pmos,xscale= 1](m6b){}     ++(-0.7,0.6)node[](){$\dM{6B}$}
-    (\xe, \yg)      node[pmos,xscale= 1](m6a){}     ++(-0.7,0.6)node[](){$\dM{6A}$}
+    (\xe, \ya)      node[nmos,xscale= 1](m0){}      ++(-0.7,0.6)node[](){\moslabel{0}{\sizeA}{\gmidA}}
+    (\xm, \yc)      node[nmos,xscale= 1](m6d){}     ++(-0.7,0.6)node[](){\moslabel{6D}{\sizeGd}{\gmidGd}}
+    (\xm, \yd)      node[nmos,xscale= 1](m6c){}     ++(-0.7,0.6)node[](){\moslabel{6C}{\sizeGc}{\gmidGc}}
+    (\xe, \yf)      node[pmos,xscale= 1](m6b){}     ++(-0.7,0.6)node[](){\moslabel{6B}{\sizeGb}{\gmidGb}}
+    (\xe, \yg)      node[pmos,xscale= 1](m6a){}     ++(-0.7,0.6)node[](){\moslabel{6A}{\sizeGa}{\gmidGa}}
 
-    (\xf, \yb)      node[nmos,xscale=-1](m2){}      ++(-0.4,0.2)node[](){$\dM{2 }$}
-    (\xf, \ye)      node[nmos,xscale= 1](m2a){}     ++(-0.7,0.6)node[](){$\dM{2A}$}
-    (\xf, \yf)      node[pmos,xscale= 1](m4a){}     ++(-0.7,0.6)node[](){$\dM{4A}$}
-    (\xf, \yg)      node[pmos,xscale= 1](m4){}      ++(-0.7,0.6)node[](){$\dM{4 }$}
+    (\xf, \yb)      node[nmos,xscale=-1](m2){}      ++(-0.4,0.2)node[](){\moslabel{2}{\sizeC}{\gmidC}}
+    (\xf, \ye)      node[nmos,xscale= 1](m2a){}     ++(-0.7,0.6)node[](){\moslabel{2A}{\sizeCa}{\gmidCa}}
+    (\xf, \yf)      node[pmos,xscale= 1](m4a){}     ++(-0.7,0.6)node[](){\moslabel{4A}{\sizeEa}{\gmidEa}}
+    (\xf, \yg)      node[pmos,xscale= 1](m4){}      ++(-0.7,0.6)node[](){\moslabel{4}{\sizeE}{\gmidE}}
 
     (\xfb, \yd)     node[american and port](voc){}  ++(-0.7,0.3)node[](){}
     (\xfb, \yb-1)     node[op amp,yscale=-1,xscale=-1](opamp){} ++(-0.7,0.3)node[](){}

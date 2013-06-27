@@ -41,7 +41,8 @@ xt  xp  xm  yp  ym  difflooptest ai='ai' av='av'
 ******************************************************
 *Stimulus and analyses (uncomment respective statements)
 ******************************************************
-.options post brief runlvl=6
+.options post brief
+.options runlvl=6
 
 .op
 
