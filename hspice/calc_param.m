@@ -88,12 +88,6 @@ w3=id12/idw3;       % id3 = id12
 %fprintf('W3 is %.3fum\n', w3);
 
 
-cl=2e-12;
-cf=3e-12;
-cs=cf*2;
-
-% NEW
-
 m12al=1.3;
 m12aw=1.5;
 m34al=1;
@@ -119,8 +113,6 @@ lbiasp=lp*m34l;
 lbb2p1=lp*m34l;
 lbb2p2=lp*m34al;
 lbb2n=ln*m12al;
-% END NEW
-
 
 %Ratio
 k_0_b=20;

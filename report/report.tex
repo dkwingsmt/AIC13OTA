@@ -9,7 +9,7 @@
             CJKbookmarks=true,
             colorlinks=true,
             linkcolor=black]{hyperref}
-\usepackage[noindent,nocap,nopunct,space]{ctex}
+\usepackage[nocap,nopunct,space]{ctex}
 \usepackage{wrapfig}
 \usepackage{fancyhdr}   %页眉页脚
 \usepackage{ifthen}
@@ -252,13 +252,13 @@ Telescopic电路图及各项器件的参数如图\ref{circuit}。
 首先，我们使用电路测量了所使用晶体管的几条特征曲线，详细说明如表\ref{finds}。
 \begin{table}
   \begin{center}
-    \begin{tabular}{ccc}
+    \begin{tabular}{ccp{5cm}}
       测量内容 & 文件 & 备注 \\\hline
-      $g_mr_0$--$f$ & \texttt{findgmr0.sp} & 
+      $g_mr_0$--$L$ & \texttt{findgmr0.sp} & 
             固定$V_D=1\uV$及$V_{ov}=0.2\uV$；在漏极使用大电感来通直隔交 \\
-      $g_m/I_D$--$f_t$ & \texttt{findgmid\_ft.sp} &
+      $\frac{g_m}{I_D}$--$f_t$ & \texttt{findgmid\_ft.sp} &
             固定$V_D=3\uV$    \\
-      $g_m/I_D$--$I_D/W$ & \texttt{findgmid\_idw.sp} &
+      $\frac{g_m}{I_D}$--$\frac{I_D}{W}$ & \texttt{findgmid\_idw.sp} &
             固定$V_D=3\uV$    
     \end{tabular}
   \end{center}
@@ -285,13 +285,16 @@ Telescopic电路图及各项器件的参数如图\ref{circuit}。
     \end{tabular}
   \end{center}
   \caption{电路设计要求}
-  \label{requirements}
+  \label{requirements}次极点与
 \end{table}
 除了这些数据之外还需要的一些其它数据，我们为其设定一个初始值。
 \DM{1,2}的栅级电容与$C_s$的比设定为$k_{C_{g1,2},C_s}=0.5$；
+\DM{1A,2A}的特征频率与次极点的比设定为$k_{\omega_{1A,2A},p_2}=4.5$；
+电流源的过驱动电压设定为$0.2\uV$；
 电压输出摆幅设定为$V_{swing}=2\uV$。
 相位裕度没有要求，为了达到较好的建立时间应达到$72\udeg$，不过这里暂时设定为
-$80\udeg$；沟道电流噪声系数取长沟道$\gamma=2/3$。
+$80\udeg$；
+沟道电流噪声系数取长沟道$\gamma=2/3$。
 
 最后我们暂时假设所有NMOS和所有PMOS各具有相同的沟道长度。
 
@@ -304,9 +307,30 @@ $$C_L=C_{Ltot}-(1-\beta)C_f$$
 在这里会验证$C_L$是否满足$2\upF$的要求。
 
 接下来通过静态误差得到低频增益的要求
-$a_v0=\frac{1}{\epsilon_s\beta}$
+$$a_{v0}=\frac{1}{\epsilon_s\beta}$$
+从而得到本征增益
+$$g_mr_0=sqrt{2a_{v0}}$$
+实际计算发现需求的本征增益较大，成为限制沟道长度的主要因素，
+因此通过查找可以得到沟道长度$L_n$和$L_p$。
 
+通过动态性能可以得到单位增益带宽$omega_c$
+$$\tau_d=\frac{t_d}{\log(1/\epsilon_d)}$$
+$$\omega_c=\frac{1}{\tau_d}$$
+电路主极点位于\DM{1,2}栅级，可以通过极点得到\DM{1,2}栅级参数进而得到特征频率
+$$g_{m1}=\frac{\omega_c}{\beta C_{Ltot}}$$
+$$f_{T1}=\frac{g_{m1}}{2\pi C_{g1,2}}$$
+通过查表可以得到$\frac{g_{m1}}{I_{D1}}$。通过$\frac{g_{m1}}{I_{D1}}$，
+首先可以得到\DM{1,2}支路的漏极电流，还可以通过查表得到$\frac{I_{D1}}{W_1}$
+从而得到\DM{1,2}的沟道宽度。
 
+接下来通过次极点处理\DM{1A}。通过相位裕度可以得到次极点
+$$p_2\approx\frac{\omega_c}{\tan(90\udeg-\mathrm{PM})}$$
+由预设的比值得到\DM{1A,2A}的特征频率，
+再通过查表得到$\frac{g_{m1A}}{I_{D1A}}$，从而得到$\frac{I_{D1A}}{W_1A}$。
+由于其漏极电流与\DM{1,2}相同，可以得到\DM{1A,2A}的沟道宽度。
+
+已设的$V_{ov3}$在长沟道近似下可以得到$g_{m3}/I_{D3}
+已知\DM{1,2}的漏极电流之后，
 
 
 \subsection{手工调整}
