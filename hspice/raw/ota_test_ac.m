@@ -60,5 +60,5 @@ if do_plot ~= 0
     axis([1e-2 1e4 -180 0]);
     grid;
 end
-
+print_pdf('../../report/common/ac.pdf',20,26);
 end

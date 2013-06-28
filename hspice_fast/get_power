@@ -1,0 +1,2 @@
+grep -m1 '.*total voltage source.*' | awk '{print $6}'
+

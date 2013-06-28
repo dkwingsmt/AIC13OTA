@@ -20,11 +20,13 @@ if input_diff_err < 0.01
     fprintf('## input_diff correct! Error %f\n', input_diff_err);
 else
     fprintf('## Please re-run make. Error %f\n', input_diff_err);
-    % Write to local input_diff.sp, while read the workspace version
-    f=fopen('input_diff.sp', 'w');
-    fprintf(f, '.param input_diff=%f', input_diff);
-    fclose(f);
-    fprintf('[Written to file] input_diff = %f\n', input_diff);
+    if do_plot==0
+        % Write to local input_diff.sp, while read the workspace version
+        f=fopen('input_diff.sp', 'w');
+        fprintf(f, '.param input_diff=%f', input_diff);
+        fclose(f);
+        fprintf('[Written to file] input_diff = %f\n', input_diff);
+    end
 end
 if do_plot ~= 0
     figure(3);
@@ -32,11 +34,11 @@ if do_plot ~= 0
     set(gca,'FontSize',14);
     set(gca,'FontName','Arial');
     set(gca,'LineWidth',1.5);
-    axis([-3 3 0 7000]);
+    axis([-3 3 0 9000]);
     grid;
     xlabel('V_o_d [V]');
     ylabel('V_o_d/V_s_d [V/V]');
 end
-
+print_pdf('../../report/common/dc.pdf',20,13);
 end
 
