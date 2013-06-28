@@ -355,6 +355,8 @@ $W_{5A}=W_{5B}/5$，$W_{7B}=W_{7A}$。
 
 \section{电路性能}
 \subsection{AC仿真频率特性}
+电路幅频曲线，相频曲线如图\ref{commonac}所示。
+可以看到低频闭环增益为$107.42\uMHz$，相位裕度为$70.61\udeg$，闭环跨导频率$1407$。
 \begin{figure}[htb]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{common/ac.pdf}
@@ -362,13 +364,13 @@ $W_{5A}=W_{5B}/5$，$W_{7B}=W_{7A}$。
     \caption{AC仿真曲线}
     \label{commonac}
 \end{figure}
-电路幅频曲线，相频曲线如图\ref{commonac}所示。
-可以看到低频闭环增益为$107.42\uMHz$，相位裕度为$70.61\udeg$，闭环跨导频率$1407$。
+
 % Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
 % low frequency loop gain, the loop crossover frequency and the phase margin.
 \newpage
 \clearpage
 \subsection{输出范围}
+直流仿真如图\ref{commondc}，最大差模增益为$8045$，$70\%$的最大增益为$5631$，输出范围为$1.58\uV$。
 \begin{figure}[htb]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{common/dc.pdf}
@@ -376,27 +378,35 @@ $W_{5A}=W_{5B}/5$，$W_{7B}=W_{7A}$。
     \caption{DC仿真曲线}
     \label{commondc}
 \end{figure}
-最大差模增益为$8045$,$70\%$的最大增益为$5631$,输出范围为$1.58\uV$。
+
 \newpage
 \clearpage
 \subsection{噪声性能}
 
+从图\ref{commonnoise}看到DR为$86.05\udB$，满足性能指标。
+Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难达到要求。
+但也应注意到噪声小也是其主要优势，通过调节尽可能增大输出摆幅，
+减小噪声可以提高动态范围。
 \begin{figure}[htb]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{common/noise.pdf}
     \end{center}
-    \caption{noise仿真曲线}
+    \caption{噪声仿真曲线}
     \label{commonnoise}
 \end{figure}
-从图\ref{commonnoise}看到DR为$86.05\udB$,满足性能指标。Telescopic 结构的缺点在于输出摆幅比较小,致使动态范围很难达到要求。但也应注意到噪声小也是其主要优势,通过调节尽可能增大输出摆幅,减小噪声可以提高动态范围。
+
 \newpage
 \clearpage
 \subsection{瞬态性能}
+通过之前的DC仿真，已经知道输出摆幅。
+设定参数为该值，在输出满摆幅的情况下，进行时序仿真，
+静态误差为$0.08\%$。建立时间为$10.33\uns$，
+满足要求。
 \begin{figure}[htb]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{common/tran1.pdf}
     \end{center}
-    \caption{noise仿真曲线1}
+    \caption{瞬态仿真曲线1}
     \label{commontran1}
 \end{figure}
 
@@ -404,11 +414,9 @@ $W_{5A}=W_{5B}/5$，$W_{7B}=W_{7A}$。
     \begin{center}
         \includegraphics[width=0.8\textwidth]{common/tran2.pdf}
     \end{center}
-    \caption{noise仿真曲线2}
+    \caption{瞬态仿真曲线2}
     \label{commontran2}
 \end{figure}
-通过之前的dc仿真,已经知道输出摆幅。设定参数为该值，在输出满摆幅的情况下,进行时序仿真,静态误差为$0.08\%$。建立时间为$10.33\uns$,
-满足要求。
 \newpage
 \clearpage
 \subsection{性能总结}
