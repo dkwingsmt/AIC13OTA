@@ -107,9 +107,15 @@ backgroundcolor=\color{gray},
 
 \newcommand{\udeg}{\si{\degree}}
 
+\newcommand{\ten}[1]{\ensuremath{\times10^{#1}}}
+
 \newcommand{\dM}[1]{\mathrm{M}_\mathrm{#1}}
+\newcommand{\DM}[1]{$\dM{#1}$}
 \newcommand{\dR}[1]{\mathrm{R}_\mathrm{#1}}
+\newcommand{\DR}[1]{$\dR{#1}$}
 \newcommand{\dC}[1]{\mathrm{C}_\mathrm{#1}}
+\newcommand{\DC}[1]{$\dC{#1}$}
+
 
 %% circuitikz 
 \makeatletter
@@ -290,7 +296,7 @@ $80\udeg$；沟道电流噪声系数取长沟道$\gamma=2/3$。
 最后我们暂时假设所有NMOS和所有PMOS各具有相同的沟道长度。
 
 接下来进入正式计算。首先容易得到的是电容反馈系数
-$$\beta=\frac{C_f}{C_f+C_s+C_{g1,2}$$
+$$\beta=\frac{C_f}{C_f+C_s+C_{g1,2}}$$
 为了得到$C_L$和$C_{Ltot}$，通过噪声功率
 $$N_{tot}=\frac{V_{swing}^2}{2\times10^{\mathrm{DR}/10}}$$
 $$C_{Ltot}=\frac{2kT\gamma}{\beta N_{tot}}$$
