@@ -236,7 +236,66 @@ backgroundcolor=\color{gray},
 % (see section on point distribution below).
 
 \section{设计过程}
-\subsection{理论分析}
+\subsection{准备工作}
+首先，我们使用电路测量了所使用晶体管的几条特征曲线，详细说明如表\ref{finds}。
+\begin{table}
+  \begin{center}
+    \begin{tabular}{ccc}
+      测量内容 & 文件 & 备注 \\\hline
+      $g_mr_0$--$f$ & \texttt{findgmr0.sp} & 
+            固定$V_D=1\uV$及$V_{ov}=0.2\uV$；在漏极使用大电感来通直隔交 \\
+      $g_m/I_D$--$f_t$ & \texttt{findgmid\_ft.sp} &
+            固定$V_D=3\uV$    \\
+      $g_m/I_D$--$I_D/W$ & \texttt{findgmid\_idw.sp} &
+            固定$V_D=3\uV$    
+    \end{tabular}
+  \end{center}
+  \caption{测量特征曲线的详细说明}
+  \label{finds}
+\end{table}
+
+接下来为了方便调试，将提供的Testbench进行自动化，运行Makefile及\texttt{ota\_sumup.m}
+即可运行四个调试并显示所有参数。
+
+\subsection{理论计算}
+首先我们完成了电路的拓扑图，但所有的晶体管长宽、$I_B$和共模反馈跨导都没有确定。
+由于共模反馈理论上不会影响差模性能，我们将其跨导定为$10\umS$。
+
+为了从理论上推导出计算结果，我们首先需要得到电路设计要求如表\ref{requirements}。
+\begin{table}
+  \begin{center}
+    \begin{tabular}{cc}
+      参数 & 要求 \\\hline
+      DR & $80\udB$ \\
+      $\epsilon_s$ & $0.1\%$ \\
+      $\epsilon_d$ & $0.05\%$ \\
+      $t_d$ & $10\uns$ \\
+    \end{tabular}
+  \end{center}
+  \caption{电路设计要求}
+  \label{requirements}
+\end{table}
+除了这些数据之外还需要的一些其它数据，我们为其设定一个初始值。
+\DM{1,2}的栅级电容与$C_s$的比设定为$k_{C_{g1,2},C_s}=0.5$；
+电压输出摆幅设定为$V_{swing}=2\uV$。
+相位裕度没有要求，为了达到较好的建立时间应达到$72\udeg$，不过这里暂时设定为
+$80\udeg$；沟道电流噪声系数取长沟道$\gamma=2/3$。
+
+最后我们暂时假设所有NMOS和所有PMOS各具有相同的沟道长度。
+
+接下来进入正式计算。首先容易得到的是电容反馈系数
+$$\beta=\frac{C_f}{C_f+C_s+C_{g1,2}$$
+为了得到$C_L$和$C_{Ltot}$，通过噪声功率
+$$N_{tot}=\frac{V_{swing}^2}{2\times10^{\mathrm{DR}/10}}$$
+$$C_{Ltot}=\frac{2kT\gamma}{\beta N_{tot}}$$
+$$C_L=C_{Ltot}-(1-\beta)C_f$$
+在这里会验证$C_L$是否满足$2\upF$的要求。
+
+接下来通过静态误差得到低频增益的要求
+$a_v0=\frac{1}{\epsilon_s\beta}$
+
+
+
 
 \subsection{手工调整}
 
