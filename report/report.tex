@@ -467,8 +467,6 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
 % the gain has dropped by 30%.  This value should be larger than the peak output 
 % voltage used in your dynamic range calculation.
 
-\newpage
-\clearpage
 % Page 11-12: Results of corner simulations. Tabulate your circuit’s performance 
 % for the slow/hot and fast/cold corner. Include settling time, static error, 
 % and any other parameter that you find noteworthy. Include the %-changes with 
@@ -477,105 +475,177 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
 % the problem (no need to fix the circuit). Include selected interesting plots 
 % documenting corner performance and/or issues.
 
+\clearpage
+\newpage
+
 \section{slow corner路性能}
 \subsection{AC仿真频率特性}
-【图片，AC】
-电路幅频曲线，相频曲线如图所示。
-可以看到低频闭环增益为，相位裕度为，闭环跨导频率。
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics[width=\textwidth]{slow/ac.pdf}
+    \end{center}
+    \caption{AC仿真曲线}
+    \label{slowac}
+\end{figure}
+电路幅频曲线，相频曲线如图\ref{slowac}所示。
+可以看到低频闭环增益为$1319$，相位裕度为$70.66\udeg$，闭环跨导频率$1319$。
 % Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
 % low frequency loop gain, the loop crossover frequency and the phase margin.
 \newpage
 \clearpage
 \subsection{输出范围}
-【图片，DC】
-输出范围为。输出摆幅比原数据略大。
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics[width=\textwidth]{slow/dc.pdf}
+    \end{center}
+    \caption{DC仿真曲线}
+    \label{slowdc}
+\end{figure}
+输出范围为$1.39\uV$。输出摆幅比原数据略小。
 \newpage
 \clearpage
 \subsection{噪声性能}
-【图片，noise】
-从图中看到DR为dB。噪声特性DR变低。
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics[width=\textwidth]{slow/noise.pdf}
+    \end{center}
+    \caption{noise仿真曲线}
+    \label{slownoise}
+\end{figure}
+从图中看到DR为$84.57\udB$。噪声特性DR变小。
 \newpage
 \clearpage
 \subsection{瞬态性能}
-【图片，transient】两张
-可以看出静态误差变大，线性建立时间变长。
+
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics[width=\textwidth]{slow/tran1.pdf}
+    \end{center}
+    \caption{noise仿真曲线1}
+    \label{slowtran1}
+\end{figure}
+
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics[width=\textwidth]{slow/tran2.pdf}
+    \end{center}
+    \caption{noise仿真曲线2}
+    \label{slowtran2}
+\end{figure}
+可以看出静态误差变大，线性建立时间变大。
+
 \newpage
 \clearpage
 \subsection{性能总结}
+
 \begin{table}[htbp]
     \begin{tabular}{|c|c|}
         \hline
-        dynamic range&\\
+        dynamic range&$84.57\udB$
         \hline
-        phase margin&\\
+        phase margin&$70.66\udeg$
         \hline
-        $f_c$ &\\
+        $f_c$ &$86.65\uMhHZ$
         \hline 
-        $T_0$&\\
+        $T_0$&$1319$
         \hline
-        $V_{odmax}$&\\
+        $V_{odmax}$&$1.37\uV$
         \hline
-        $t_s$($\varepsilon_s$=0.1\%)&\\
+        $t_s$($\varepsilon_s$=0.1\%)&$11.89\uns$
         \hline
-        power consumption&\\
+        power consumption&$9.42\umW$
         \hline
-        $C_l$&\\
+        $C_l$&$2.3\upF$
         \hline
-        $C_s$&\\
+        $C_s$&$3.3\upF$
         \hline
     \end{tabular}
 \end{table}
-
 \newpage
 \clearpage
 
 \section{fast corner路性能}
 \subsection{AC仿真频率特性}
-【图片，AC】
-电路幅频曲线，相频曲线如图\ref{commonac}所示。
-可以看到低频闭环增益为，相位裕度为，闭环跨导频率。
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics[width=\textwidth]{fast/ac.pdf}
+    \end{center}
+    \caption{AC仿真曲线}
+    \label{fastac}
+\end{figure}
+电路幅频曲线，相频曲线如图\ref{fastac}所示。
+可以看到低频闭环增益为$1210$，相位裕度为$70.72\udeg$，闭环跨导频率$1210$。
 可以发现负反馈增益和带宽有相互抑制的关系。
 % Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
 % low frequency loop gain, the loop crossover frequency and the phase margin.
 \newpage
 \clearpage
 \subsection{输出范围}
-【图片，DC】
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics[width=\textwidth]{fast/dc.pdf}
+    \end{center}
+    \caption{DC仿真曲线}
+    \label{fastdc}
+\end{figure}
 %\ref{dc}
-输出范围为。输出摆幅比原数据略。
+输出范围为$1.61\uV$。输出摆幅比原数据略大。
 \newpage
 \clearpage
 \subsection{噪声性能}
-【图片，noise】
-从图中看到DR为dB。噪声特性DR变。
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics[width=\textwidth]{fast/noise.pdf}
+    \end{center}
+    \caption{noise仿真曲线}
+    \label{fastnoise}
+\end{figure}
+从图中看到DR为$86.52\udB$。噪声特性DR变大。
 \newpage
 \clearpage
 \subsection{瞬态性能}
-【图片，transient】两张
-可以看出静态误差变，线性建立时间变。
+
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics[width=\textwidth]{fast/tran1.pdf}
+    \end{center}
+    \caption{noise仿真曲线1}
+    \label{fasttran1}
+\end{figure}
+
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics[width=\textwidth]{fast/tran2.pdf}
+    \end{center}
+    \caption{noise仿真曲线2}
+    \label{fasttran2}
+\end{figure}
+可以看出静态误差变大，线性建立时间变小。
+
 \newpage
 \clearpage
 \subsection{性能总结}
+
 \begin{table}[htbp]
     \begin{tabular}{|c|c|}
         \hline
-        dynamic range&\\
+        dynamic range&$86.52\udB$
         \hline
-        phase margin&\\
+        phase margin&$70.72\udeg$
         \hline
-        $f_c$ &\\
+        $f_c$ &$117.04\uMhHZ$
         \hline 
-        $T_0$&\\
+        $T_0$&$1210$
         \hline
-        $V_{odmax}$&\\
+        $V_{odmax}$&$1.61\uV$
         \hline
-        $t_s$($\varepsilon_s$=0.1\%)&\\
+        $t_s$($\varepsilon_s$=0.1\%)&$9.6\uns$
         \hline
-        power consumption&\\
+        power consumption&$9.29\umW$
         \hline
-        $C_l$&\\
+        $C_l$&$2.3\upF$
         \hline
-        $C_s$&\\
+        $C_s$&$3.3\upF$
         \hline
     \end{tabular}
 \end{table}
@@ -614,3 +684,4 @@ matlab仿真，以及后期调整迭代的project，使我们对于设计流程�
 
 
 \end{document}
+

@@ -32,6 +32,7 @@ if do_plot ~= 0
     ylabel('PSD [V^2/Hz]');
     axis([min(f) max(f) min(no)/10 10*max(no)]);
     grid;
+    
 
     subplot(2,1,2)
     semilogx(f, integ_sqrt,'linewidth', 2);
@@ -44,6 +45,7 @@ if do_plot ~= 0
     string=sprintf('Integral=%2.2fuVrms, DR=%2.2fdB (for V_o_d_m_a_x=%2.2fV)', integ_final, DR, vodpeak);
     title(string);
     grid;
+    print_pdf('../../report/common/noise.pdf',20,26);
 
 end
 
