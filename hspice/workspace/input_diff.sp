@@ -1,1 +1,0 @@
-.param input_diff=0.791681
