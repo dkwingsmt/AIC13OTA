@@ -125,7 +125,7 @@ k_1_b=k_0_b/(k_6_1+2);
 
 
 % Tail MOS
-id0=id12/k_1_b*k_0_b    % And gm0=gm3...
+id0=id12/k_1_b*k_0_b
 gmid0=gmid3;
 idw0=interp1(gmid_idw_gmidn, gmid_idw_idwn, gmid0);
 w0=id0/idw0;

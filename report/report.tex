@@ -251,7 +251,7 @@ Telescopic电路图及各项器件的参数如图\ref{circuit}。
 \section{设计过程}
 \subsection{准备工作}
 首先，我们使用电路测量了所使用晶体管的几条特征曲线，详细说明如表\ref{finds}。
-\begin{table}
+\begin{table}[htb]
   \begin{center}
     \begin{tabular}{ccp{5cm}}
       测量内容 & 文件 & 备注 \\\hline
@@ -275,7 +275,7 @@ Telescopic电路图及各项器件的参数如图\ref{circuit}。
 由于共模反馈理论上不会影响差模性能，我们将其跨导定为$10\umS$。
 
 为了从理论上推导出计算结果，我们首先需要得到电路设计要求如表\ref{requirements}。
-\begin{table}
+\begin{table}[htb]
   \begin{center}
     \begin{tabular}{cc}
       参数 & 要求 \\\hline
@@ -286,7 +286,7 @@ Telescopic电路图及各项器件的参数如图\ref{circuit}。
     \end{tabular}
   \end{center}
   \caption{电路设计要求}
-  \label{requirements}次极点与
+  \label{requirements}
 \end{table}
 除了这些数据之外还需要的一些其它数据，我们为其设定一个初始值。
 \DM{1,2}的栅级电容与$C_s$的比设定为$k_{C_{g1,2},C_s}=0.5$；
@@ -327,11 +327,26 @@ $$f_{T1}=\frac{g_{m1}}{2\pi C_{g1,2}}$$
 接下来通过次极点处理\DM{1A}。通过相位裕度可以得到次极点
 $$p_2\approx\frac{\omega_c}{\tan(90\udeg-\mathrm{PM})}$$
 由预设的比值得到\DM{1A,2A}的特征频率，
-再通过查表得到$\frac{g_{m1A}}{I_{D1A}}$，从而得到$\frac{I_{D1A}}{W_1A}$。
+再通过查表得到$\frac{g_{m1A}}{I_{D1A}}$，从而得到$\frac{I_{D1A}}{W_{1A}}$。
 由于其漏极电流与\DM{1,2}相同，可以得到\DM{1A,2A}的沟道宽度。
 
-已设的$V_{ov3}$在长沟道近似下可以得到$g_{m3}/I_{D3}$
-已知\DM{1,2}的漏极电流之后，
+已设的$V_{ov3}$在长沟道近似下可以得到$g_{m3}/I_{D3}$，
+已知\DM{1,2}的漏极电流之后可以依次得到$g_{m3}$、$\frac{I_{D3}}{W_3}$和$W_3$。
+
+最后定电流镜的参数。根据书上所述，定\DM{6A}支路电流为$0.1I_{D1,2}$，
+从而得到\DM{0}支路电流，其已定的$V_{ov0}$可以得到$g_{m0}/I_{D0}$，
+查表得到$I_{D0}/W_0$后可以得到$W_0$。
+\DM{B}、\DM{5,7}支路电流并无限制，因此为了降低功耗应尽量减小，
+将其电流定为题目限制的最小值$I_{D0}/20$从而得到$W_{0,5C,7C}=W_0/20$；
+
+在$I_{D1}$已得出的情况下，
+$W_{5B}$和$W_{6B}$可以由$W_{3A}$按比例求出，
+$W_{7A}$和$W_{6A}$也可以由$W_3$求出，
+；根据电流镜的经验设定，令
+$W_{5A}=W_{5B}/5$，$W_{7B}=W_{7A}$。
+根据经验设定$W_{6C}=W_{1A}$，$W_{6D}=W_{6C}/5$。
+
+至此所有待定器件参数都已确定。
 
 
 \subsection{手工调整}
