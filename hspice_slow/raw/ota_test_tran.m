@@ -56,7 +56,7 @@ if do_plot ~= 0
     set(gca,'LineWidth',1);
     xlabel('Time  [ns]');
     ylabel('V_o_d [mV]');
-    axis([0 15 0 2200]);
+    axis([0 15 0 1800]);
     grid;
 
     string = sprintf('e_s=%2.2f%%, t_s=%2.2fns\n', es, ts);
@@ -68,7 +68,7 @@ if do_plot ~= 0
     set(gca,'LineWidth',1);
     xlabel('Time  [ns]');
     ylabel('Error [%]');
-    axis([0 100 -5 5]);
+    axis([0 15 -0.5 0.5]);
     grid;
     line([0 t(end)], [static_plus static_plus]);
     line([0 t(end)], [static_minus static_minus]);
@@ -82,7 +82,7 @@ if do_plot ~= 0
     set(gca,'LineWidth',1);
     xlabel('Time  [ns]');
     ylabel('V_o_c [mV]');
-    axis([0 10 1000 2000]);
+    axis([0 15 1400 1600]);
     grid;
     subplot(3,1,2)
     plot(t, vid, 'linewidth', 2);
@@ -91,7 +91,7 @@ if do_plot ~= 0
     set(gca,'LineWidth',1);
     xlabel('Time  [ns]');
     ylabel('V_i_d [mV]');
-    axis([0 10 -100 800]);
+    axis([0 15 -100 600]);
     grid;
     subplot(3,1,3)
     plot(t, iod, 'linewidth', 2);
@@ -100,7 +100,7 @@ if do_plot ~= 0
     set(gca,'LineWidth',1);
     xlabel('Time  [ns]');
     ylabel('I_o_d [mA]');
-    axis([0 10 -0.1 0.5]);
+    axis([0 15 -0.1 0.5]);
     grid;
     print_pdf('../../report/slow/tran2.pdf',20,39);
 end

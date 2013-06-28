@@ -57,6 +57,9 @@ backgroundcolor=\color{gray},
 
 \headheight=13pt
 
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
 % 本文档自定义变量
 
 \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
@@ -230,10 +233,16 @@ Telescopic电路图及各项器件的参数如图\ref{circuit}。
   \caption{最终电路结构及参数}
   \label{circuit}
 \end{figure}
+
 \subsection{差分负反馈电路}
-为克服 PVT 变化对电路性能的影响,降低增益的灵敏度,扩展带宽,提高线性度等一系列原因本电路采用差分负反馈电路。本实验差分负反馈电路如图所示。【图片，差分负反馈】
-\subsection{共模反馈电路}
-共模反馈的电路结构如图所示,主要起到稳定共模输出点的作用,使输出共模点稳定在【数值】左右。【图片，共模反馈电路】
+为克服 PVT 变化对电路性能的影响，降低增益的灵敏度，扩展带宽，
+提高线性度等一系列原因本电路采用差分负反馈电路。本实验差分负反馈电路如图\ref{cfb}所示。
+\begin{figure}[htb!]
+  \centering
+  \includegraphics[width=0.7\textwidth]{cfb.png}
+  \caption{差分负反馈电路}
+  \label{cfb}
+\end{figure}
 
 \newpage
 \clearpage
@@ -254,13 +263,15 @@ Telescopic电路图及各项器件的参数如图\ref{circuit}。
 \begin{table}[htb]
   \begin{center}
     \begin{tabular}{ccp{5cm}}
+      \hline
       测量内容 & 文件 & 备注 \\\hline
       $g_mr_0$--$L$ & \texttt{findgmr0.sp} & 
-            固定$V_D=1\uV$及$V_{ov}=0.2\uV$；在漏极使用大电感来通直隔交 \\
+            固定$V_D=1\uV$及$V_{ov}=0.2\uV$ \\
       $\frac{g_m}{I_D}$--$f_t$ & \texttt{findgmid\_ft.sp} &
             固定$V_D=3\uV$    \\
       $\frac{g_m}{I_D}$--$\frac{I_D}{W}$ & \texttt{findgmid\_idw.sp} &
             固定$V_D=3\uV$    
+      \\\hline
     \end{tabular}
   \end{center}
   \caption{测量特征曲线的详细说明}
@@ -278,11 +289,13 @@ Telescopic电路图及各项器件的参数如图\ref{circuit}。
 \begin{table}[htb]
   \begin{center}
     \begin{tabular}{cc}
+      \hline
       参数 & 要求 \\\hline
       DR & $80\udB$ \\
       $\epsilon_s$ & $0.1\%$ \\
       $\epsilon_d$ & $0.05\%$ \\
       $t_d$ & $10\uns$ \\
+      \hline
     \end{tabular}
   \end{center}
   \caption{电路设计要求}
@@ -376,8 +389,8 @@ $C_{gs1,2}$、增大\DM{1,2}长度来增加本征增益，增大\DM{3,4a}以及\
 
 \section{电路性能}
 \subsection{AC仿真频率特性}
-电路幅频曲线，相频曲线如图\ref{commonac}所示。
-可以看到低频闭环增益为$107.97\uMHz$，相位裕度为$70.63\udeg$，闭环跨导频率$1410$。
+电路幅频曲线、相频曲线如图\ref{commonac}所示。
+从曲线计算得出，低频闭环增益为$107.97\uMHz$，相位裕度为$70.63\udeg$，闭环跨导频率$1410$。
 \begin{figure}[htb]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{common/ac.pdf}
@@ -442,27 +455,32 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
 \clearpage
 \subsection{性能总结}
 \begin{table}[htbp]
-    \begin{tabular}{|c|c|}
-        \hline
+  \centering
+    \begin{tabular}{cc}
+      \hline
+      性能 & 数值 
+        \\\hline
         dynamic range&$86.04\udB$
-        \\\hline
+        \\
         phase margin&$70.63\udeg$
-        \\\hline
+        \\
         $f_c$ &$107.97\uMHz$
-        \\\hline 
+        \\ 
         $T_0$&$1410$
-        \\\hline
+        \\
         $V_{odmax}$&$1.57\uV$
-        \\\hline
+        \\
         $t_s$($\varepsilon_s$=0.1\%)&$9.78\uns$
-        \\\hline
+        \\
         power consumption&$9.26\umW$
-        \\\hline
+        \\
         $C_l$&$2.3\upF$
-        \\\hline
+        \\
         $C_s$&$3.3\upF$
         \\\hline
     \end{tabular}
+  \caption{性能总结}
+  \label{sum}
 \end{table}
 
 % Page 7: Plots the simulated settling transient of Vod (no zoom, show the 
@@ -560,27 +578,32 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
 \subsection{性能总结}
 
 \begin{table}[htbp]
-    \begin{tabular}{|c|c|}
-        \hline
+  \centering
+    \begin{tabular}{cc}
+      \hline
+      性能 & 数值 
+        \\\hline
         dynamic range&$84.56\udB$
-        \\\hline
+        \\
         phase margin&$70.68\udeg$
-        \\\hline
+        \\
         $f_c$ &$87.05\uMHz$
-        \\\hline 
+        \\ 
         $T_0$&$1310$
-        \\\hline
+        \\
         $V_{odmax}$&$1.33\uV$
-        \\\hline
+        \\
         $t_s$($\varepsilon_s$=0.1\%)&$10.19\uns$
-        \\\hline
+        \\
         power consumption&$9.42\umW$
-        \\\hline
+        \\
         $C_l$&$2.3\upF$
-        \\\hline
+        \\
         $C_s$&$3.3\upF$
         \\\hline
     \end{tabular}
+    \caption{slow corner性能总结}
+    \label{slow_sum}
 \end{table}
 \newpage
 \clearpage
@@ -648,27 +671,31 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
 \subsection{性能总结}
 
 \begin{table}[htbp]
-    \begin{tabular}{|c|c|}
+  \centering
+    \begin{tabular}{cc}
         \hline
+        性能 & 数值 \\\hline
         dynamic range&$86.51\udB$
-        \\\hline
+        \\
         phase margin&$70.74\udeg$
-        \\\hline
+        \\
         $f_c$ &$117.57\uMHz$
-        \\\hline 
+        \\ 
         $T_0$&$1214$
-        \\\hline
+        \\
         $V_{odmax}$&$1.58\uV$
-        \\\hline
+        \\
         $t_s$($\varepsilon_s$=0.1\%)&$9.7\uns$
-        \\\hline
+        \\
         power consumption&$9.70\umW$
-        \\\hline
+        \\
         $C_l$&$2.3\upF$
-        \\\hline
+        \\
         $C_s$&$3.3\upF$
         \\\hline
     \end{tabular}
+    \caption{fast corner性能总结}
+    \label{fast_sum}
 \end{table}
 
 
