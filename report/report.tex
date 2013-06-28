@@ -214,14 +214,20 @@ backgroundcolor=\color{gray},
 % currents clearly labeled. Show component values right next to the components, 
 % and currents next to the branches (i.e., absolutely, positively do not make us 
 % refer to a look-up table). Annotate all transistors with the chosen gm/ID value.
+\subsection{Telescopic电路结构}
+Telescopic电路图及各项器件的参数如图\ref{circuit}。
 
-电路图及各项器件的参数如图\ref{circuit}。
+图中采用简单镜像电流源对 Telescopic 的支路电流进行偏置。
 \begin{figure}[htb!]
   \centering
   \input{circuit.tex}
   \caption{最终电路结构及参数}
   \label{circuit}
 \end{figure}
+\subsection{差分负反馈电路}
+为克服 PVT 变化对电路性能的影响,降低增益的灵敏度,扩展带宽,提高线性度等一系列原因本电路采用差分负反馈电路。本实验差分负反馈电路如图所示。【图片，差分负反馈】
+\subsection{共模反馈电路}
+共模反馈的电路结构如图所示,主要起到稳定共模输出点的作用,使输出共模点稳定在【数值】左右。【图片，共模反馈电路】
 
 \newpage
 
@@ -243,12 +249,50 @@ backgroundcolor=\color{gray},
 \newpage
 
 \section{电路性能}
-环路增益如图
-
+\subsection{AC仿真频率特性}
+【图片，AC】
+电路幅频曲线，相频曲线如图所示。
+可以看到低频闭环增益为，相位裕度为，闭环跨导频率。
 % Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
 % low frequency loop gain, the loop crossover frequency and the phase margin.
-
 \newpage
+\subsection{输出范围}
+【图片，DC】
+最大差模增益为,70\%的最大增益为,对应的 Vod 的工作点位于,所以输出范围为。
+\newpage
+\subsection{噪声性能}
+【图片，noise】
+从图中看到DR为dB,满足性能指标。Telescopic 结构的缺点在于输出摆幅比较小,致使动态范围很难达到要求。但也应注意到噪声小也是其主要优势,通过调节尽可能增大输出摆幅,减小噪声可以提高动态范围。
+\newpage
+\subsection{瞬态性能}
+【图片，transient】两张
+通过之前的dc仿真,已经知道输出摆幅约为。设定参数为该值， 在输出满摆幅的情况下,进行时序仿真,静态误差为\%。建立时间为,
+满足要求。
+\newpage
+\subsection{性能总结}
+\begin{table}[htbp]
+    \begin{tabular}{|c|c|}
+        \hline
+        dynamic range&\\
+        \hline
+        phase margin&\\
+        \hline
+        $f_c$ &\\
+        \hline 
+        $T_0$&\\
+        \hline
+        $V_{odmax}$&\\
+        \hline
+        $t_s$($\varepsilon_s$=0.1\%)&\\
+        \hline
+        power consumption&\\
+        \hline
+        $C_l$&\\
+        \hline
+        $C_s$&\\
+        \hline
+    \end{tabular}
+\end{table}
 
 % Page 7: Plots the simulated settling transient of Vod (no zoom, show the 
 % entire waveform). In a separate subplot, show the % error of the differential 
@@ -258,19 +302,15 @@ backgroundcolor=\color{gray},
 % settling error. For simplicity, we use the error at t=30ns as an estimate of 
 % the static settling error.  
 
-\newpage
 
 % Page 8: Plot the common mode output voltage versus time during transient 
 % settling of the circuit. In separate subplots each, also show the differential 
 % output current of the OTA, and the differential input to the OTA (Vid in Figure 1).
 
-\newpage
 
 % Page 9: Plot of the noise power spectral density at the OTA output (Vod) and 
 % noise integral.  Annotate the total integrated noise value and the achieved 
 % dynamic range.  
-
-\newpage
 
 % Page 10: Output range. Simulation plot showing the differential open loop DC 
 % gain Vod/Vid of the amplifier. Mark the differential output voltage at which 
@@ -278,7 +318,6 @@ backgroundcolor=\color{gray},
 % voltage used in your dynamic range calculation.
 
 \newpage
-
 % Page 11-12: Results of corner simulations. Tabulate your circuit’s performance 
 % for the slow/hot and fast/cold corner. Include settling time, static error, 
 % and any other parameter that you find noteworthy. Include the %-changes with 
@@ -287,11 +326,138 @@ backgroundcolor=\color{gray},
 % the problem (no need to fix the circuit). Include selected interesting plots 
 % documenting corner performance and/or issues.
 
+\section{slow corner路性能}
+\subsection{AC仿真频率特性}
+【图片，AC】
+电路幅频曲线，相频曲线如图所示。
+可以看到低频闭环增益为，相位裕度为，闭环跨导频率。
+% Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
+% low frequency loop gain, the loop crossover frequency and the phase margin.
 \newpage
+\subsection{输出范围}
+【图片，DC】
+输出范围为。输出摆幅比原数据略大。
+\newpage
+\subsection{噪声性能}
+【图片，noise】
+从图中看到DR为dB。噪声特性DR变低。
+\newpage
+\subsection{瞬态性能}
+【图片，transient】两张
+可以看出静态误差变大，线性建立时间变长。
+\newpage
+\subsection{性能总结}
+\begin{table}[htbp]
+    \begin{tabular}{|c|c|}
+        \hline
+        dynamic range&\\
+        \hline
+        phase margin&\\
+        \hline
+        $f_c$ &\\
+        \hline 
+        $T_0$&\\
+        \hline
+        $V_{odmax}$&\\
+        \hline
+        $t_s$($\varepsilon_s$=0.1\%)&\\
+        \hline
+        power consumption&\\
+        \hline
+        $C_l$&\\
+        \hline
+        $C_s$&\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\newpage
+
+\section{fast corner路性能}
+\subsection{AC仿真频率特性}
+【图片，AC】
+电路幅频曲线，相频曲线如图所示。
+可以看到低频闭环增益为，相位裕度为，闭环跨导频率。
+可以发现负反馈增益和带宽有相互抑制的关系。
+% Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
+% low frequency loop gain, the loop crossover frequency and the phase margin.
+\newpage
+\subsection{输出范围}
+【图片，DC】
+%\begin{figure}[htb]
+%    \begin{center}
+%        \includegraphics[width=\textwidth]{....pdf}
+%    \end{center}
+%    \caption{DC图}
+%    \label{dc}
+%\end{figure}
+%\ref{dc}
+输出范围为。输出摆幅比原数据略。
+\newpage
+\subsection{噪声性能}
+【图片，noise】
+从图中看到DR为dB。噪声特性DR变。
+\newpage
+\subsection{瞬态性能}
+【图片，transient】两张
+可以看出静态误差变，线性建立时间变。
+\newpage
+\subsection{性能总结}
+\begin{table}[htbp]
+    \begin{tabular}{|c|c|}
+        \hline
+        dynamic range&\\
+        \hline
+        phase margin&\\
+        \hline
+        $f_c$ &\\
+        \hline 
+        $T_0$&\\
+        \hline
+        $V_{odmax}$&\\
+        \hline
+        $t_s$($\varepsilon_s$=0.1\%)&\\
+        \hline
+        power consumption&\\
+        \hline
+        $C_l$&\\
+        \hline
+        $C_s$&\\
+        \hline
+    \end{tabular}
+\end{table}
+
 
 % Page 13: Comments and Conclusion. Here, you can convey issues you may have had, 
 % or things you’ve learned/not learned in this project.
 \section{结论与总结}
+本次project使我对OTA设计有了更深的理解。书本上轻描淡写几笔带过的设计流程，
+在实际设计中却有着复杂而错综复杂的关联关系。从前期对电路结构的选择，到最终
+选择Telescopic结构，对于不同OTA的特点有了更深的理解。集成了手工计算，
+matlab仿真，以及后期调整迭代的project，使我们对于设计流程有了更
+深入的体会。并且对各个参数指标之间的关系进行了思考和分析，整理了这些互相交织的概念
+。通过对课本基本两级 OTA 的设计案例的分析,参照其流程和思路,我们
+经过多次修改和调试完成了本次课程设计。在调试和修改的过程中,我感触最深刻的
+是电路性能之间的互相关联以及为达到设计指标所做出的折衷。为了换得到较小的动态误差，
+我们相应牺牲了一些相位裕量和并加大了一些功耗。
+这样的妥协还有很多，正是在权衡考虑之间，才能更好的设计出满足设计指标的电路。
+
+另外，课程设计中涉及到的电路复杂，结构互相关联。project要求中模块化设计的设计思路,
+对于我们很有帮助。各个电路结构成一个个子系统
+，电路参数提取时分成一个个小文件，这样可以防止我们在纷多的设计参数中迷乱，
+在复杂的电路前束手无策。在分析偏置模块和差分负反馈模块的性能,明确各个管子在电路中的作用,仿真
+过程中更有针对性地对关键晶体管反复进行参数修改过程中,模块化设计保证了调试的有效进行。
+
+最后，值得一提的是在本次设计中大量使用了自动化脚本进行数据分析。因为脚本的大量使用，我们可以实现在
+命令行中输入一个命令，就可以将调整过设计要求的电路参数自动输出到文件，之后再include进入hspice仿真
+完整之后的工作，再一次性完成多个技术参数的提取。通过这样的步骤，大大简化了较为繁琐的手续，可以更加高效的完成
+后面的设计。
+
+课程设计汇报时助教候老师提出的建议对我们后续的修改和优化起到了较大的帮助,在这里感谢助教老师。
+在整个报告的最后，将感谢献给小组的成员。日日夜夜的奋斗得到的不仅仅是一个project，
+更是对于问题的思考，对于困难的无畏，对于更高标准的坚持，对于合作的推崇。很多问题自己琢磨很久没有头绪,
+在和大家一起讨论分析之后问题能够逐渐被解决。相信所有的这一切都会成为大家共同的回忆。
+
 
 
 \end{document}
