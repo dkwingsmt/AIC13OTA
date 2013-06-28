@@ -72,7 +72,7 @@ if do_plot ~= 0
     grid;
     line([0 t(end)], [static_plus static_plus]);
     line([0 t(end)], [static_minus static_minus]);
-    print_pdf('../../report/common/tran1.pdf',20,26);
+    print_pdf('../../report/slow/tran1.pdf',20,26);
 
     figure(5)
     subplot(3,1,1)
@@ -102,7 +102,7 @@ if do_plot ~= 0
     ylabel('I_o_d [mA]');
     axis([0 15 -0.1 0.5]);
     grid;
-    print_pdf('../../report/common/tran2.pdf',20,39);
+    print_pdf('../../report/slow/tran2.pdf',20,39);
 end
 
 

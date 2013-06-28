@@ -4,15 +4,15 @@
 .include utils.sp
 .include project.sp
 
-.lib 'ee214_hspice.txt' nominal
+*.lib 'ee214_hspice.txt' nominal
 
 * slow corner
 *.lib 'ee214_hspice_slowfast.txt' slow
 *.temp 125
 
 * fast corner
-*.lib 'ee214_hspice_slowfast.txt' fast
-*.temp 0
+.lib 'ee214_hspice_slowfast.txt' fast
+.temp 0
 
 ******************************************************
 *Circuit description

@@ -16,7 +16,7 @@ vswing = (vod(c(end))-vod(c(1)));
 input_diff = vswing/4;
 
 input_diff_err = abs((input_diff_read - input_diff)/vswing);
-if input_diff_err < 0.0001
+if input_diff_err < 0.01
     fprintf('## input_diff correct! Error %f\n', input_diff_err);
 else
     fprintf('## Please re-run make. Error %f\n', input_diff_err);
@@ -39,6 +39,6 @@ if do_plot ~= 0
     xlabel('V_o_d [V]');
     ylabel('V_o_d/V_s_d [V/V]');
 end
-print_pdf('../../report/common/dc.pdf',20,13);
+print_pdf('../../report/slow/dc.pdf',20,13);
 end
 

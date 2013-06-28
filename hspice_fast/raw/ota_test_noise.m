@@ -45,7 +45,7 @@ if do_plot ~= 0
     string=sprintf('Integral=%2.2fuVrms, DR=%2.2fdB (for V_o_d_m_a_x=%2.2fV)', integ_final, DR, vodpeak);
     title(string);
     grid;
-    print_pdf('../../report/common/noise.pdf',20,26);
+    print_pdf('../../report/fast/noise.pdf',20,26);
 
 end
 
