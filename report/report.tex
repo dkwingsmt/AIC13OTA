@@ -236,6 +236,7 @@ Telescopic电路图及各项器件的参数如图\ref{circuit}。
 共模反馈的电路结构如图所示,主要起到稳定共模输出点的作用,使输出共模点稳定在【数值】左右。【图片，共模反馈电路】
 
 \newpage
+\clearpage
 
 % Pages 3-5: Calculation of key design parameters, such as transconductances, 
 % bias currents, etc.  Be sure to include a calculation of the circuit’s settling 
@@ -329,7 +330,7 @@ $$p_2\approx\frac{\omega_c}{\tan(90\udeg-\mathrm{PM})}$$
 再通过查表得到$\frac{g_{m1A}}{I_{D1A}}$，从而得到$\frac{I_{D1A}}{W_1A}$。
 由于其漏极电流与\DM{1,2}相同，可以得到\DM{1A,2A}的沟道宽度。
 
-已设的$V_{ov3}$在长沟道近似下可以得到$g_{m3}/I_{D3}
+已设的$V_{ov3}$在长沟道近似下可以得到$g_{m3}/I_{D3}$
 已知\DM{1,2}的漏极电流之后，
 
 
@@ -341,7 +342,7 @@ $$p_2\approx\frac{\omega_c}{\tan(90\udeg-\mathrm{PM})}$$
 \subsection{AC仿真频率特性}
 \begin{figure}[htb]
     \begin{center}
-        \includegraphics[width=\textwidth]{common/ac.pdf}
+        \includegraphics[width=0.8\textwidth]{common/ac.pdf}
     \end{center}
     \caption{AC仿真曲线}
     \label{commonac}
@@ -351,31 +352,34 @@ $$p_2\approx\frac{\omega_c}{\tan(90\udeg-\mathrm{PM})}$$
 % Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
 % low frequency loop gain, the loop crossover frequency and the phase margin.
 \newpage
+\clearpage
 \subsection{输出范围}
 \begin{figure}[htb]
     \begin{center}
-        \includegraphics[width=\textwidth]{common/dc.pdf}
+        \includegraphics[width=0.8\textwidth]{common/dc.pdf}
     \end{center}
     \caption{DC仿真曲线}
     \label{commondc}
 \end{figure}
 最大差模增益为$8045$,$70\%$的最大增益为$5631$,输出范围为$1.58\uV$。
 \newpage
+\clearpage
 \subsection{噪声性能}
 
 \begin{figure}[htb]
     \begin{center}
-        \includegraphics[width=\textwidth]{common/noise.pdf}
+        \includegraphics[width=0.8\textwidth]{common/noise.pdf}
     \end{center}
     \caption{noise仿真曲线}
     \label{commonnoise}
 \end{figure}
 从图\ref{commonnoise}看到DR为$86.05\udB$,满足性能指标。Telescopic 结构的缺点在于输出摆幅比较小,致使动态范围很难达到要求。但也应注意到噪声小也是其主要优势,通过调节尽可能增大输出摆幅,减小噪声可以提高动态范围。
 \newpage
+\clearpage
 \subsection{瞬态性能}
 \begin{figure}[htb]
     \begin{center}
-        \includegraphics[width=\textwidth]{common/tran1.pdf}
+        \includegraphics[width=0.8\textwidth]{common/tran1.pdf}
     \end{center}
     \caption{noise仿真曲线1}
     \label{commontran1}
@@ -383,36 +387,37 @@ $$p_2\approx\frac{\omega_c}{\tan(90\udeg-\mathrm{PM})}$$
 
 \begin{figure}[htb]
     \begin{center}
-        \includegraphics[width=\textwidth]{common/tran2.pdf}
+        \includegraphics[width=0.8\textwidth]{common/tran2.pdf}
     \end{center}
     \caption{noise仿真曲线2}
     \label{commontran2}
 \end{figure}
-通过之前的dc仿真,已经知道输出摆幅。设定参数为该值，在输出满摆幅的情况下,进行时序仿真,静态误差为$0.08\%$。建立时间为$10.33\ut$,
+通过之前的dc仿真,已经知道输出摆幅。设定参数为该值，在输出满摆幅的情况下,进行时序仿真,静态误差为$0.08\%$。建立时间为$10.33\uns$,
 满足要求。
 \newpage
+\clearpage
 \subsection{性能总结}
 \begin{table}[htbp]
     \begin{tabular}{|c|c|}
         \hline
         dynamic range&$86.05\udB$
-        \hline
+        \\\hline
         phase margin&$70.61\udeg$
-        \hline
-        $f_c$ &$107.42\uMhHZ$
-        \hline 
+        \\\hline
+        $f_c$ &$107.42\uMHz$
+        \\\hline 
         $T_0$&$1407$
-        \hline
+        \\\hline
         $V_{odmax}$&$1.58\uV$
-        \hline
+        \\\hline
         $t_s$($\varepsilon_s$=0.1\%)&$10.33\uns$
-        \hline
+        \\\hline
         power consumption&$9.26\umW$
-        \hline
+        \\\hline
         $C_l$&$2.3\upF$
-        \hline
+        \\\hline
         $C_s$&$3.3\upF$
-        \hline
+        \\\hline
     \end{tabular}
 \end{table}
 
@@ -440,6 +445,7 @@ $$p_2\approx\frac{\omega_c}{\tan(90\udeg-\mathrm{PM})}$$
 % voltage used in your dynamic range calculation.
 
 \newpage
+\clearpage
 % Page 11-12: Results of corner simulations. Tabulate your circuit’s performance 
 % for the slow/hot and fast/cold corner. Include settling time, static error, 
 % and any other parameter that you find noteworthy. Include the %-changes with 
@@ -456,18 +462,22 @@ $$p_2\approx\frac{\omega_c}{\tan(90\udeg-\mathrm{PM})}$$
 % Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
 % low frequency loop gain, the loop crossover frequency and the phase margin.
 \newpage
+\clearpage
 \subsection{输出范围}
 【图片，DC】
 输出范围为。输出摆幅比原数据略大。
 \newpage
+\clearpage
 \subsection{噪声性能}
 【图片，noise】
 从图中看到DR为dB。噪声特性DR变低。
 \newpage
+\clearpage
 \subsection{瞬态性能}
 【图片，transient】两张
 可以看出静态误差变大，线性建立时间变长。
 \newpage
+\clearpage
 \subsection{性能总结}
 \begin{table}[htbp]
     \begin{tabular}{|c|c|}
@@ -494,6 +504,7 @@ $$p_2\approx\frac{\omega_c}{\tan(90\udeg-\mathrm{PM})}$$
 \end{table}
 
 \newpage
+\clearpage
 
 \section{fast corner路性能}
 \subsection{AC仿真频率特性}
@@ -504,19 +515,23 @@ $$p_2\approx\frac{\omega_c}{\tan(90\udeg-\mathrm{PM})}$$
 % Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
 % low frequency loop gain, the loop crossover frequency and the phase margin.
 \newpage
+\clearpage
 \subsection{输出范围}
 【图片，DC】
 %\ref{dc}
 输出范围为。输出摆幅比原数据略。
 \newpage
+\clearpage
 \subsection{噪声性能}
 【图片，noise】
 从图中看到DR为dB。噪声特性DR变。
 \newpage
+\clearpage
 \subsection{瞬态性能}
 【图片，transient】两张
 可以看出静态误差变，线性建立时间变。
 \newpage
+\clearpage
 \subsection{性能总结}
 \begin{table}[htbp]
     \begin{tabular}{|c|c|}
