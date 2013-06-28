@@ -8,8 +8,8 @@
 .param w0=4.3928e-04
 .param w1=6.5387e-04
 .param w2=6.5387e-04
-.param w1a=3.2434e-04
-.param w2a=3.2434e-04
+.param w1a=3.0272e-04
+.param w2a=3.0272e-04
 .param w3=1.6142e-03
 .param w3a=8.3701e-04
 .param w4=1.6142e-03
@@ -19,8 +19,8 @@
 .param w5c=2.1964e-05
 .param w6a=1.6142e-04
 .param w6b=8.3701e-05
-.param w6c=3.2434e-05
-.param w6d=6.4868e-06
+.param w6c=3.0272e-05
+.param w6d=6.0544e-06
 .param w7a=1.6949e-04
 .param w7b=1.6949e-04
 .param w7c=2.1964e-05

@@ -88,14 +88,8 @@ w3=id12/idw3;       % id3 = id12
 %fprintf('W3 is %.3fum\n', w3);
 
 
-cl=2e-12;
-cf=3e-12;
-cs=cf*2;
-
-% NEW
-
 m12al=1.3;
-m12aw=1.5;
+m12aw=1.4;
 m34al=1;
 m34aw=0.7;
 m12l=1;
@@ -119,8 +113,6 @@ lbiasp=lp*m34l;
 lbb2p1=lp*m34l;
 lbb2p2=lp*m34al;
 lbb2n=ln*m12al;
-% END NEW
-
 
 %Ratio
 k_0_b=20;
@@ -133,7 +125,7 @@ k_1_b=k_0_b/(k_6_1+2);
 
 
 % Tail MOS
-id0=id12/k_1_b*k_0_b    % And gm0=gm3...
+id0=id12/k_1_b*k_0_b
 gmid0=gmid3;
 idw0=interp1(gmid_idw_gmidn, gmid_idw_idwn, gmid0);
 w0=id0/idw0;

@@ -1,1 +1,1 @@
-.param input_diff=0.684155
+.param input_diff=0.663796
