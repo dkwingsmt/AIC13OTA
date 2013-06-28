@@ -377,7 +377,7 @@ $C_{gs1,2}$、增大\DM{1,2}长度来增加本征增益，增大\DM{3,4a}以及\
 \section{电路性能}
 \subsection{AC仿真频率特性}
 电路幅频曲线，相频曲线如图\ref{commonac}所示。
-可以看到低频闭环增益为$107.42\uMHz$，相位裕度为$70.61\udeg$，闭环跨导频率$1407$。
+可以看到低频闭环增益为$107.97\uMHz$，相位裕度为$70.63\udeg$，闭环跨导频率$1410$。
 \begin{figure}[htb]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{common/ac.pdf}
@@ -391,7 +391,7 @@ $C_{gs1,2}$、增大\DM{1,2}长度来增加本征增益，增大\DM{3,4a}以及\
 \newpage
 \clearpage
 \subsection{输出范围}
-直流仿真如图\ref{commondc}，最大差模增益为$8045$，$70\%$的最大增益为$5631$，输出范围为$1.58\uV$。
+直流仿真如图\ref{commondc}，最大差模增益为$8120$，输出范围为$1.57\uV$。
 \begin{figure}[htb]
     \begin{center}
         \includegraphics[width=0.8\textwidth]{common/dc.pdf}
@@ -404,7 +404,7 @@ $C_{gs1,2}$、增大\DM{1,2}长度来增加本征增益，增大\DM{3,4a}以及\
 \clearpage
 \subsection{噪声性能}
 
-从图\ref{commonnoise}看到DR为$86.05\udB$，满足性能指标。
+从图\ref{commonnoise}看到DR为$86.04\udB$，满足性能指标。
 Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难达到要求。
 但也应注意到噪声小也是其主要优势，通过调节尽可能增大输出摆幅，
 减小噪声可以提高动态范围。
@@ -421,7 +421,7 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
 \subsection{瞬态性能}
 通过之前的DC仿真，已经知道输出摆幅。
 设定参数为该值，在输出满摆幅的情况下，进行时序仿真，
-静态误差为$0.08\%$。建立时间为$10.33\uns$，
+静态误差为$0.09\%$。建立时间为$9.78\uns$，
 满足要求。
 \begin{figure}[htb]
     \begin{center}
@@ -444,17 +444,17 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
 \begin{table}[htbp]
     \begin{tabular}{|c|c|}
         \hline
-        dynamic range&$86.05\udB$
+        dynamic range&$86.04\udB$
         \\\hline
-        phase margin&$70.61\udeg$
+        phase margin&$70.63\udeg$
         \\\hline
-        $f_c$ &$107.42\uMHz$
+        $f_c$ &$107.97\uMHz$
         \\\hline 
-        $T_0$&$1407$
+        $T_0$&$1410$
         \\\hline
-        $V_{odmax}$&$1.58\uV$
+        $V_{odmax}$&$1.57\uV$
         \\\hline
-        $t_s$($\varepsilon_s$=0.1\%)&$10.33\uns$
+        $t_s$($\varepsilon_s$=0.1\%)&$9.78\uns$
         \\\hline
         power consumption&$9.26\umW$
         \\\hline
@@ -509,7 +509,7 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
     \label{slowac}
 \end{figure}
 电路幅频曲线，相频曲线如图\ref{slowac}所示。
-可以看到低频闭环增益为$1319$，相位裕度为$70.66\udeg$，闭环跨导频率$1319$。
+可以看到低频闭环增益为$1310$，相位裕度为$70.68\udeg$，闭环跨导频率$1310$。
 % Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
 % low frequency loop gain, the loop crossover frequency and the phase margin.
 \newpage
@@ -522,7 +522,7 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
     \caption{DC仿真曲线}
     \label{slowdc}
 \end{figure}
-输出范围为$1.39\uV$。输出摆幅比原数据略小。
+输出范围为$1.33\uV$。输出摆幅比原数据略小。
 \newpage
 \clearpage
 \subsection{噪声性能}
@@ -533,7 +533,7 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
     \caption{noise仿真曲线}
     \label{slownoise}
 \end{figure}
-从图中看到DR为$84.57\udB$。噪声特性DR变小。
+从图中看到DR为$84.56\udB$。噪声特性DR变小。
 \newpage
 \clearpage
 \subsection{瞬态性能}
@@ -562,17 +562,17 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
 \begin{table}[htbp]
     \begin{tabular}{|c|c|}
         \hline
-        dynamic range&$84.57\udB$
+        dynamic range&$84.56\udB$
         \\\hline
-        phase margin&$70.66\udeg$
+        phase margin&$70.68\udeg$
         \\\hline
-        $f_c$ &$86.65\uMHz$
+        $f_c$ &$87.05\uMHz$
         \\\hline 
-        $T_0$&$1319$
+        $T_0$&$1310$
         \\\hline
-        $V_{odmax}$&$1.37\uV$
+        $V_{odmax}$&$1.33\uV$
         \\\hline
-        $t_s$($\varepsilon_s$=0.1\%)&$11.89\uns$
+        $t_s$($\varepsilon_s$=0.1\%)&$10.19\uns$
         \\\hline
         power consumption&$9.42\umW$
         \\\hline
@@ -595,7 +595,7 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
     \label{fastac}
 \end{figure}
 电路幅频曲线，相频曲线如图\ref{fastac}所示。
-可以看到低频闭环增益为$1210$，相位裕度为$70.72\udeg$，闭环跨导频率$1210$。
+可以看到低频闭环增益为$1214$，相位裕度为$70.74\udeg$，闭环跨导频率$1214$。
 可以发现负反馈增益和带宽有相互抑制的关系。
 % Page 6: Bode plot of T(j), phase and magnitude. Clearly annotate the achieved 
 % low frequency loop gain, the loop crossover frequency and the phase margin.
@@ -610,7 +610,7 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
     \label{fastdc}
 \end{figure}
 %\ref{dc}
-输出范围为$1.61\uV$。输出摆幅比原数据略大。
+输出范围为$1.58\uV$。输出摆幅比原数据略大。
 \newpage
 \clearpage
 \subsection{噪声性能}
@@ -621,7 +621,7 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
     \caption{noise仿真曲线}
     \label{fastnoise}
 \end{figure}
-从图中看到DR为$86.52\udB$。噪声特性DR变大。
+从图中看到DR为$86.51\udB$。噪声特性DR变大。
 \newpage
 \clearpage
 \subsection{瞬态性能}
@@ -650,19 +650,19 @@ Telescopic 结构的缺点在于输出摆幅比较小，致使动态范围很难
 \begin{table}[htbp]
     \begin{tabular}{|c|c|}
         \hline
-        dynamic range&$86.52\udB$
+        dynamic range&$86.51\udB$
         \\\hline
-        phase margin&$70.72\udeg$
+        phase margin&$70.74\udeg$
         \\\hline
-        $f_c$ &$117.04\uMHz$
+        $f_c$ &$117.57\uMHz$
         \\\hline 
-        $T_0$&$1210$
+        $T_0$&$1214$
         \\\hline
-        $V_{odmax}$&$1.61\uV$
+        $V_{odmax}$&$1.58\uV$
         \\\hline
-        $t_s$($\varepsilon_s$=0.1\%)&$9.6\uns$
+        $t_s$($\varepsilon_s$=0.1\%)&$9.7\uns$
         \\\hline
-        power consumption&$9.29\umW$
+        power consumption&$9.70\umW$
         \\\hline
         $C_l$&$2.3\upF$
         \\\hline
